@@ -11,15 +11,21 @@ Finally, it would be nice to give the user a sample roll of what might possibly 
 Of course, that simply isn't the case ...in general... Look at something as simple as 2d4(two four-sided dice):
 
 All possible resulting combinations when rolling two dice each with four sides.
-Die 1	Die 2	Total		Die 1	Die 2	Total
-1	1	2		3	1	4
-1	2	3		3	2	5
-1	3	4		3	3	6
-1	4	5		3	4	7
-2	1	3		4	1	5
-2	2	4		4	2	6
-2	3	5		4	3	7
-2	4	6		4	4	8
+```
++-------+-------+-------+    +-------+-------+-------+
+| Die 1 | Die 2 | Total |    | Die 1 | Die 2 | Total |
++-------+-------+-------+    +-------+-------+-------+
+|   1   |   1   |   2   |    |   3   |   1   |   4   |
+|   1   |   2   |   3   |    |   3   |   2   |   5   |
+|   1   |   3   |   4   |    |   3   |   3   |   6   |
+|   1   |   4   |   5   |    |   3   |   4   |   7   |
+|   2   |   1   |   3   |    |   4   |   1   |   5   |
+|   2   |   2   |   4   |    |   4   |   2   |   6   |
+|   2   |   3   |   5   |    |   4   |   3   |   7   |
+|   2   |   4   |   6   |    |   4   |   4   |   8   |
++-------+-------+-------+    +-------+-------+-------+
+
+```
 Summary of the numer of ways each possible total can be arrived at when rolling two dice of four sides each.
 Dice Total	2	3	4	5	6	7	8
 Ways to get It	1	2	3	4	3	2	1
