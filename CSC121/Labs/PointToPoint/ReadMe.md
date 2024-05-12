@@ -6,9 +6,10 @@ Write a program that helps the user calculate the midpoint of a line segment in 
 
 As an example, you might have the program interaction look something like (the parts in this color are typed by the user):
 
+```
 $ ./midpoint.out
 
-                 Welcome to the 2D Midpoint Program!!!
+Welcome to the 2D Midpoint Program!!!
 
 What is the first end-point?  3.4 12.2
 What is the second end-point?  13.4 12.2
@@ -23,3 +24,4 @@ Thank you for using the TMP!!
 Endeavor to have a voracious day!
 
 $
+```
