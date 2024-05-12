@@ -6,7 +6,7 @@ Write a program that helps the user calculate the midpoint of a line segment in 
 
 As an example, you might have the program interaction look something like (the parts in this color are typed by the user):
 
-```
+```C++
 $ ./midpoint.out
 
 Welcome to the 2D Midpoint Program!!!
