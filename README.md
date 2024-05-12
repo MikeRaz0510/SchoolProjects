@@ -1,5 +1,13 @@
 This Repository contains all of my projects I completed during my time in school.
 
+
+-----------------------Harper College-----------------------
+
+CSC 121 - Computer Science I
+
+CSC 122 - Computer Science II
+
+
 ---------------Northern Illinois University---------------
 
 CSCI 330 - UNIX and Network Programming
@@ -19,10 +27,3 @@ CSCI 466 - Databases
 CSCI 467 - Intro to Software Engineering
 
 CSCI 480 - Principles of Operating Systems
-
-
------------------------Harper College-----------------------
-
-CSC 121 - Computer Science I
-
-CSC 122 - Computer Science II
