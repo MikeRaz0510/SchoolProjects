@@ -3,6 +3,14 @@ This Repository contains all of my projects I completed during my time in school
 
 -----------------------Harper College-----------------------
 
+These classes had 2 types of assignments, Labs and Projects. Labs
+were smaller, simpler programs designed to help me build skills 
+in certain topics. Projects were larger more complex programs
+designed to test my skills learned from completing the Labs.
+The instructor gave each assignment a difficulty score which he 
+called "Levels", and required a certian number of Levels to be 
+submitted at certain points during the semester.
+
 CSC 121 - Computer Science I
 
 CSC 122 - Computer Science II
