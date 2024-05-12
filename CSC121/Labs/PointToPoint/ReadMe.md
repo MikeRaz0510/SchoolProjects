@@ -142,10 +142,12 @@ Okay, so the series equation is fine. But the one for parallel equivalent resist
 Add (Level 0.5) to algebraically manipulate the parallel equation to represent an equivalent result, but require only one (1) division and one (1) multiplication instead of the current three (3) divisions.
 
 (Hint: Consider solving the following algebraic equation:
-
+```
      1      1      1
    ---- = ---- + ----
     RP      R1     R2
+
+```
 for RP. ...how do we solve equations involving rational expressions? Hmm...)
 
 ### Multiple Resistors
