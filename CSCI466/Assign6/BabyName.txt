@@ -1,0 +1,264 @@
+MariaDB [BabyName]> \. BabyName.sql
+Database changed
++--------------------+
+| Tables_in_BabyName |
++--------------------+
+| BabyName           |
++--------------------+
+1 row in set (0.001 sec)
+
++--------------+------+
+| name         | year |
++--------------+------+
+| Aadam        | 1995 |
+| Aadil        | 1995 |
+| Aailiyah     | 1995 |
+| Aailyah      | 1995 |
+| Aaisha       | 1995 |
+| Aakash       | 1995 |
+| Aaleyah      | 1995 |
+| Aalia        | 1995 |
+| Aaliah       | 1995 |
+| Aaliayah     | 1995 |
+| Aalijah      | 1995 |
+| Aaliya       | 1995 |
+| Aaliyah      | 1995 |
+| Aaliyha      | 1995 |
+| Aalliyah     | 1995 |
+| Aalyah       | 1995 |
+| Aalyiah      | 1995 |
+| Aaminah      | 1995 |
+| Aamir        | 1995 |
+| Aanand       | 1995 |
+| Aanchal      | 1995 |
+| Aanisah      | 1995 |
+| Aaran        | 1995 |
+| Aaren        | 1995 |
+| Aariana      | 1995 |
+| Aaric        | 1995 |
+| Aarika       | 1995 |
+| Aarin        | 1995 |
+| Aarion       | 1995 |
+| Aariona      | 1995 |
+| Aaron        | 1995 |
+| Aaronjames   | 1995 |
+| Aaronmichael | 1995 |
+| Aaronn       | 1995 |
+| Aarron       | 1995 |
+| Aarti        | 1995 |
+| Aaryn        | 1995 |
+| Aashna       | 1995 |
+| Aasia        | 1995 |
+| Aasin        | 1995 |
+| Aasiyah      | 1995 |
+| Ab           | 1995 |
+| Abagael      | 1995 |
+| Abagail      | 1995 |
+| Abagaile     | 1995 |
+| Abagale      | 1995 |
+| Abagayle     | 1995 |
+| Abaigeal     | 1995 |
+| Abanoub      | 1995 |
+| Abayomi      | 1995 |
++--------------+------+
+50 rows in set (0.001 sec)
+
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | NO   | PRI | NULL    |       |
+| count  | int(11)     | YES  |     | NULL    |       |
+| gender | char(1)     | NO   | PRI | NULL    |       |
+| year   | smallint(6) | NO   | PRI | NULL    |       |
+| place  | char(2)     | NO   | PRI | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
++-------+----------------------+
+| place | COUNT(DISTINCT name) |
++-------+----------------------+
+| US    |                95025 |
++-------+----------------------+
+1 row in set (0.418 sec)
+
++------+------+
+| year | name |
++------+------+
+| 1916 | Mike |
+| 1918 | Mike |
+| 1919 | Mike |
+| 1924 | Mike |
+| 1925 | Mike |
+| 1926 | Mike |
+| 1928 | Mike |
+| 1929 | Mike |
+| 1930 | Mike |
+| 1931 | Mike |
+| 1933 | Mike |
+| 1935 | Mike |
+| 1938 | Mike |
+| 1939 | Mike |
+| 1940 | Mike |
+| 1941 | Mike |
+| 1942 | Mike |
+| 1943 | Mike |
+| 1944 | Mike |
+| 1945 | Mike |
+| 1946 | Mike |
+| 1947 | Mike |
+| 1948 | Mike |
+| 1949 | Mike |
+| 1950 | Mike |
+| 1951 | Mike |
+| 1952 | Mike |
+| 1953 | Mike |
+| 1954 | Mike |
+| 1955 | Mike |
+| 1956 | Mike |
+| 1957 | Mike |
+| 1958 | Mike |
+| 1959 | Mike |
+| 1960 | Mike |
+| 1961 | Mike |
+| 1962 | Mike |
+| 1963 | Mike |
+| 1964 | Mike |
+| 1965 | Mike |
+| 1966 | Mike |
+| 1967 | Mike |
+| 1968 | Mike |
+| 1969 | Mike |
+| 1970 | Mike |
+| 1971 | Mike |
+| 1972 | Mike |
+| 1973 | Mike |
+| 1974 | Mike |
+| 1975 | Mike |
++------+------+
+50 rows in set (0.001 sec)
+
++---------+--------+------+-------+
+| name    | gender | year | count |
++---------+--------+------+-------+
+| Michael | M      | 1984 | 67731 |
++---------+--------+------+-------+
+1 row in set (3.152 sec)
+
++----------+--------+------+-------+
+| name     | gender | year | count |
++----------+--------+------+-------+
+| Jennifer | F      | 1984 | 50562 |
++----------+--------+------+-------+
+1 row in set (3.262 sec)
+
++------+-------+--------+------+-------+
+| name | count | gender | year | place |
++------+-------+--------+------+-------+
+| Mika |     5 | F      | 1956 | US    |
+| Mika |     5 | F      | 1958 | US    |
+| Mika |     5 | M      | 1962 | US    |
+| Mika |     5 | M      | 1963 | US    |
+| Mika |     5 | M      | 1967 | US    |
+| Mika |     5 | F      | 1970 | IL    |
+| Mika |     5 | F      | 1971 | NY    |
+| Mika |     5 | F      | 1971 | IL    |
+| Mika |     5 | F      | 1971 | TX    |
+| Mika |     5 | M      | 1971 | US    |
+| Mika |     5 | F      | 1972 | CA    |
+| Mika |     5 | F      | 1976 | IL    |
+| Mika |     5 | F      | 1976 | IN    |
+| Mika |     5 | F      | 1976 | MI    |
+| Mika |     5 | F      | 1976 | UT    |
+| Mika |     5 | F      | 1981 | TX    |
+| Mika |     5 | F      | 1981 | MD    |
+| Mika |     5 | F      | 1982 | MI    |
+| Mika |     5 | F      | 1985 | LA    |
+| Mika |     5 | F      | 1985 | IL    |
+| Mika |     5 | F      | 1987 | VA    |
+| Mika |     5 | F      | 1987 | NC    |
+| Mika |     5 | F      | 1987 | OH    |
+| Mika |     5 | F      | 1989 | IN    |
+| Mika |     5 | F      | 1989 | HI    |
+| Mika |     5 | F      | 1990 | IN    |
+| Mika |     5 | F      | 1991 | HI    |
+| Mika |     5 | F      | 1991 | IN    |
+| Mika |     5 | F      | 1991 | VA    |
+| Mika |     5 | F      | 1992 | OK    |
+| Mika |     5 | F      | 1992 | NY    |
+| Mika |     5 | F      | 1992 | TN    |
+| Mika |     5 | F      | 1994 | KS    |
+| Mika |     5 | F      | 1995 | OR    |
+| Mika |     5 | F      | 1995 | KY    |
+| Mika |     5 | F      | 1995 | OH    |
+| Mika |     5 | F      | 1995 | HI    |
+| Mika |     5 | F      | 1995 | IL    |
+| Mika |     5 | F      | 1995 | FL    |
+| Mika |     5 | F      | 1996 | WA    |
+| Mika |     5 | F      | 1996 | VA    |
+| Mika |     5 | F      | 1997 | MN    |
+| Mika |     5 | M      | 1998 | CA    |
+| Mika |     5 | F      | 1998 | WA    |
+| Mika |     5 | F      | 1999 | IN    |
+| Mika |     5 | F      | 1999 | HI    |
+| Mika |     5 | F      | 1999 | TN    |
+| Mika |     5 | F      | 2000 | KS    |
+| Mika |     5 | F      | 2000 | NY    |
+| Mika |     5 | F      | 2000 | MA    |
++------+-------+--------+------+-------+
+50 rows in set (0.009 sec)
+
++------+----------------------+
+| year | COUNT(DISTINCT name) |
++------+----------------------+
+| 1946 |                 8682 |
++------+----------------------+
+1 row in set (0.030 sec)
+
++-------------+
+| Count(name) |
++-------------+
+|     7601706 |
++-------------+
+1 row in set (2.228 sec)
+
++----------------------+--------+------+
+| COUNT(DISTINCT name) | gender | year |
++----------------------+--------+------+
+|                 8193 | F      | 1968 |
+|                 4737 | M      | 1968 |
++----------------------+--------+------+
+2 rows in set (0.055 sec)
+
++--------------+-----------+
+| First_Letter | Frequency |
++--------------+-----------+
+| A            |    692769 |
+| B            |    364682 |
+| C            |    588484 |
+| D            |    504135 |
+| E            |    379253 |
+| F            |    139724 |
+| G            |    246897 |
+| H            |    193643 |
+| I            |    111005 |
+| J            |    659880 |
+| K            |    460631 |
+| L            |    507705 |
+| M            |    633808 |
+| N            |    201919 |
+| O            |     79897 |
+| P            |    164928 |
+| Q            |     17623 |
+| R            |    426545 |
+| S            |    491668 |
+| T            |    364264 |
+| U            |     10682 |
+| V            |    130097 |
+| W            |    125105 |
+| X            |      7418 |
+| Y            |     43391 |
+| Z            |     55553 |
++--------------+-----------+
+26 rows in set (3.471 sec)
+
+MariaDB [BabyName]> \t
