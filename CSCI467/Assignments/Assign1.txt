@@ -1,0 +1,63 @@
+
+Assignment 1
+Due 9/11/2023 by 11:59 pm
+100 Points
+
+
+Your name: Mike Rasmussen
+
+Answer all questions properly. All the answers can be found in the textbook.  The answer should at least be what you find in the text.  Please do not write a single sentence or two.  These are 10 point questions.  So please elaborate.  Your understanding is required for the successful completion of the project in the later weeks.
+
+1.	What are the essential attributes of good software?
+
+	Good software should be maintainable, dependable and secure, efficient, and acceptable. Software being maintainable means that it should be easy to keep your software easy to update and keep working. Being dependable and secure means that your software should meet the customers specifications so that they are able to rely on it for the task they are using it for and it should not cause physical or economic damage if there is a system failure. Good Software should also be able to keep malicious users from gaining access or damaging the system. Software being efficient means that the software should work in a way that is not wasteful of system resources such as memory and processor cycles. Finally software should be acceptable to the users it was designed for. It should be simple and easy to use and not have any compatibility issues with other software theft may be using.  If your software is maintainable, dependable and secure, efficient, and acceptable, then it will deliver the functionality and performance the customer is asking for.
+
+2.	What are the two fundamental types of software product?
+	
+	The two types of software product are generic products and customised products. A generic product is a software product that is designed to be used by many people or companies. A customised product is a software product that is commissioned to meet a specific customer need. An example of a generic product would be a program for photo editing. An editing program can be used by many different people in many different ways. An example of a customised product would be if a company has a machine that they are working with and they commission a developer to develop software to use the machine. 
+
+
+3.	What is software engineering?
+Software engineering is an engineering discipline that is concerned with all aspects of software production. Software engineering deals more with the practical aspects of programming. This is different from computer science which deals more with the theory of programming. Software engineering is all about the big picture perspective you need while undertaking a programming project.
+4.	What are the four fundamental activities in software processes?
+Software Specification: The functionality of the software and constraints on its operation must be defined.
+Software development: the software to meet the specifications must be produced.
+Software Validation: the software must be validated to ensure that it does what the customer wants.
+Software Evolution: The software must evolve to meet changing customer needs.
+What this means is that you have to first understand what the customer wants. Then you build your software to their specifications and you validate that it works when you are done. After validating it, you have to keep up with maintaining the software to keep up with the customers changing needs.
+
+5.	What is the distinction between computer science and software engineering?
+
+	Computer science teaches the theories and fundamentals of programming. Software engineering is more concerned with the practical aspects of developing software. For example Computer science will teach you the difference between a while loop and a for loop. Software engineering will teach you the way to approach a program, writing pseudocode and documentation, so that when you get to the point in your program where you have to decide to use a loop, you will have an understanding of what type of loop is best for that situation.
+
+
+
+
+6.	What are the 4 general issues that affect many different types of software? 
+The four general issues that affect software are heterogeneity, Business and social change, security and trust,  and Scale. Heterogeneity means that systems are required to operate across networks that include many different types of devices. Business and societies are changing very fast as economies develop and new technologies are invented. Software needs to be able to update to meet these changes, or develop new software rapidly. As software becomes so ingrained in our lives, people need to be able to trust it as we hold a lot of our private information in software. Finally, software has to be developed across a wide range of scales, from small control systems to global cloud based systems.
+
+7.	List 5 different types of software application.
+Stand alone applications: Apps that run on a local computer, they include the necessary functionality and do not need to be connected to a network.
+Embedded control systems: These apps control and manage hardware devices. There are probably more embedded systems than any other type of system.
+Entertainment systems: These apps are primarily for personal use, and entertain the user
+Systems for modelling and simulation:  Apps that are developed for scientists to model physical processes or situations which include many, separate, interacting objects.
+System of systems: These are apps that are composed of a number of other software systems.
+
+
+
+
+
+
+
+
+8.	What software engineering fundamentals apply to all types of software systems? 
+Systems should be developed using a managed and understood process. There are different processes for different types of software. Dependability and performance are important for all types of systems. Understanding and managing software specification and requirements are important. Where appropriate, you should reuse software that has already been developed rather than write new software.
+
+9.	What are three key characteristics of the engineering of web-based software engineering?
+Rich interfaces: there are many interface development technologies such as HTML5 that support the creation of useful and easy to use interfaces in a web browser.
+Incremental and agile development: Web based systems should be developed and delivered in separate steps. This is because it is now recognized to be impractical to specify all the requirements of such systems in advance.
+Software reuse: Software reuse is the main approach for building web based systems. It is important to think about how to develop web based systems from pre existing software.
+
+10.	What is a software engineering code of ethics?
+
+A software engineering code of ethics details how software engineers should behave in an ethical way while developing software. Software engineers should respect the confidentiality of their employers and clients whether a formal agreement has been signed or not. Engineers should not misrepresent their level of competence and should never accept work they know is outside their area of competence. Engineers need to be aware of laws about the use of intellectual property and should be careful to ensure the intellectual property of their employers remains protected. Engineers should also not use their skills to misuse other people’s computers. This can be simple, wasting time on the internet instead of working on your employer's machine, or very serious, such as developing harmful software such as viruses.
