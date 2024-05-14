@@ -1,0 +1,1169 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  8 5 6 1  --  N O D E  S V S C J E S 2        
+
+ 
+00.46.38 JOB06365 ---- SUNDAY,    07 MAY 2023 ----
+00.46.38 JOB06365  IRR010I  USERID KC03E54  IS ASSIGNED TO THIS JOB.
+00.46.38 JOB06365  ICH70001I KC03E54  LAST ACCESS AT 00:36:38 ON SUNDAY, MAY 7, 2023
+00.46.38 JOB06365  $HASP373 KC03E54A STARTED - INIT 1    - CLASS A        - SYS 8561
+00.46.39 JOB06365  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+00.46.39 JOB06365  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+00.46.39 JOB06365  -JSTEP01              00     62      5       .00       .00     .0            11  BATCH        0     0     0     0
+00.46.39 JOB06365  -KC03E54A ENDED.  NAME-M.Rasmussen          TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+00.46.39 JOB06365  $HASP395 KC03E54A ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  07 MAY 2023 JOB EXECUTION DATE
+
+
+          733 CARDS READ
+
+
+          985 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           92 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+       1 //KC03E54A JOB ,'M.Rasmussen',MSGCLASS=H                                JOB06365
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+       6 //FT05F001 DD DSN=KC02322.CSCI360.ASNDATA(DATA10),DISP=SHR                      
+         //*                                                                             
+       7 //FT06F001 DD SYSOUT=*                                                          
+       8 //                                                                              
+ICH70001I KC03E54  LAST ACCESS AT 00:36:38 ON SUNDAY, MAY 7, 2023
+IEFA111I KC03E54A IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03E54A JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IGD103I SMS ALLOCATED TO DDNAME FT05F001
+IEF237I JES2 ALLOCATED TO FT06F001
+IEF142I KC03E54A JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03E54.KC03E54A.JOB06365.D0000102.?         SYSOUT        
+IEF285I   KC03E54.KC03E54A.JOB06365.D0000101.?         SYSIN         
+IGD104I KC02322.CSCI360.ASNDATA                      RETAINED,  DDNAME=FT05F001
+IEF285I   KC03E54.KC03E54A.JOB06365.D0000103.?         SYSOUT        
+IEF373I STEP/JSTEP01 /START 2023127.0046
+IEF032I STEP/JSTEP01 /STOP  2023127.0046 
+        CPU:     0 HR  00 MIN  00.01 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11336K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03E54A/START 2023127.0046
+IEF033I  JOB/KC03E54A/STOP  2023127.0046 
+        CPU:     0 HR  00 MIN  00.01 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 *****************************************************************                           
+                                      2 *                                                               *                           
+                                      3 * CSCI 360-PE1           ASSIGNMENT 10              Spring 2023 *                           
+                                      4 * SUBPROGRAMS AND LINKAGE                                       *                           
+                                      5 *                                                               *                           
+                                      6 * DEVELOPER NAME: Mike Rasmussen                                *                           
+                                      7 * DUE DATE: 5/5/23                                              *                           
+                                      8 *                                                               *                           
+                                      9 *****************************************************************                           
+                                     10 *                                                                                           
+                                     11 *****************************************************************                           
+                                     12 *                                                               *                           
+                                     13 *                 THIS IS THE DRIVER PROGRAM                    *                           
+                                     14 *                                                               *                           
+                                     15 *****************************************************************                           
+000000                               16 PAYROLL3 CSECT                                                                              
+                                     17 *                                                                                           
+                                     18 * STANDARD ENTRY LINKAGE WITH R12 AS BASE REGISTER                                          
+                                     19 *                                                                                           
+000000 90EC D00C            0000C    20          STM   14,12,12(13)  SAVE REGS IN CALLER'S SAVE AREA                                
+000004 18CF                          21          LR    12,15         COPY CSECT ADDR INTO R12                                       
+000000                               22          USING PAYROLL3,12   ESTABLISH R12 AS THE BASE REG                                  
+000006 41E0 C048            00048    23          LA    14,SAVEREGS   R14 POINTS TO THIS CSECT'S SAVE AREA                           
+00000A 50E0 D008            00008    24          ST    14,8(,13)     STORE ADDR OF THIS CSECT'S SAVE AREA                           
+00000E 50D0 E004            00004    25          ST    13,4(,14)     STORE ADDR OF CALLER'S SAVE AREA                               
+000012 18DE                          26          LR    13,14         POINT R13 AT THIS CSECT'S SAVE AREA                            
+                                     27 *                                                                                           
+000014 41B0 CFFF            00FFF    28          LA    11,4095(,12)      R11 -> R12 + 4095                                          
+000018 41B0 B001            00001    29          LA    11,1(,11)         R11 -> R12 + 4096                                          
+001000                               30          USING PAYROLL3+4096,11  EST 2ND BASE REG                                           
+                                     31 *                                                                                           
+                                     32 * CALL THE BUILDTBL SUBPROGRAM                                                              
+                                     33 *                                                                                           
+00001C 4110 B44C            0144C    34          LA    1,BTPARMS         LOAD PARMS INTO R1                                         
+000020 58F0 C040            00040    35          L     15,=V(BUILDTBL)   LOAD VIRTUAL INTO 15                                       
+000024 05EF                          36          BALR  14,15             BRANCH AND LINK                                            
+                                     37 *                                                                                           
+                                     38 * CALL THE PROCTBL SUBPROGRAM                                                               
+                                     39 *                                                                                           
+000026 4110 B45C            0145C    40          LA    1,PTPARMS         LOAD PARMS INTO R1                                         
+00002A 58F0 C044            00044    41          L     15,=V(PROCTBL)    LOAD VIRTUAL INTO 15                                       
+00002E 05EF                          42          BALR  14,15             BRANCH AND LINK                                            
+                                     43 *                                                                                           
+                                     44 * STANDARD EXIT LINKAGE WITH RC OF 0                                                        
+                                     45 *                                                                                           
+000030 1BFF                          46          SR    15,15        R15 = RETURN CODE OF 0                                          
+000032 58D0 D004            00004    47          L     13,4(,13)    POINT R13 TO CALLER'S SAVE AREA                                 
+000036 58E0 D00C            0000C    48          L     14,12(,13)   RESTORE REGISTER 14                                             
+00003A 980C D014            00014    49          LM    0,12,20(13)  RESTORE R0 THRU R12                                             
+                                     50 *                                                                                           
+00003E 07FE                          51          BR    14           RETURN TO CALLER                                                
+                                     52 *                                                                                           
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                     53          LTORG              LITERAL ORGANIZATION                                            
+000040 00001470                      54                =V(BUILDTBL)                                                                 
+000044 00001590                      55                =V(PROCTBL)                                                                  
+                                     56 *                                                                                           
+000048                               57 SAVEREGS DS    18F          PROGRAM'S REGISTER SAVE AREA                                    
+                                     58 *                                                                                           
+                                     59 * PACKED DECIMAL STORAGE                                                                    
+                                     60 *                                                                                           
+000090 0000000C                      61 PFWHPCT  DC    PL4'0'       PACKED FEDERAL WITHHOLDING PERCENTAGE                           
+000094 0000000C                      62 PSWHPCT  DC    PL4'0'       PACKED STATE WITHHOLDING PERCENTAGE                             
+000098 00000C                        63 PEMPCTR  DC    PL3'0'       PACKED EMPLOYEE COUNTER (MAX 999)                               
+                                     64 *                                                                                           
+00009B                               65 EMPTBL   DS    120CL42      THE EMPTBL AFTER BEING READ FROM RECORD                         
+                                     66 *                                                                                           
+                                     67 * PARMS LISTS FOR DRIVER PROGRAM                                                            
+                                     68 *                                                                                           
+00144C 00000090                      69 BTPARMS  DC    A(PFWHPCT)   ADDRESS OF PFWHPCT                                              
+001450 00000094                      70          DC    A(PSWHPCT)   ADDRESS OF PSWHPCT                                              
+001454 0000009B                      71          DC    A(EMPTBL)    ADDRESS OF EMPTBL                                               
+001458 00000098                      72          DC    A(PEMPCTR)   ADDRESS OF PEMPCTR                                              
+                                     73 *                                                                                           
+00145C 00000090                      74 PTPARMS  DC    A(PFWHPCT)   ADDRESS OF PFWHPCT                                              
+001460 00000094                      75          DC    A(PSWHPCT)   ADDRESS OF PSWHPCT                                              
+001464 0000009B                      76          DC    A(EMPTBL)    ADDRESS OF EMPTBL                                               
+001468 00000098                      77          DC    A(PEMPCTR)   ADDRESS OF PEMPCTRS                                             
+                                     78 *                                                                                           
+                                     79 *****************************************************************                           
+                                     80 *                                                               *                           
+                                     81 *             THIS IS THE BUILDTBL SUBPROGRAM                   *                           
+                                     82 *                                                               *                           
+                                     83 *****************************************************************                           
+                                     84 *                                                               *                           
+                                     85 * THIS SUBPROGRAM WILL READ IN THE RECORD FROM THE INPUT FILE   *                           
+                                     86 * IT WILL THEN USE THE RECORD TO BUILD A TABLE OF ALL THE       *                           
+                                     87 * EMPLOYEES TO LATER BE PROCESSED BY PROCTBL                    *                           
+                                     88 *                                                               *                           
+                                     89 *****************************************************************                           
+                                     90 *                                                                                           
+                                     91 *        DUMMY STORAGE FOR BUILDTBL                                                         
+                                     92 *                                                                                           
+000000                               93 $TBLENT1 DSECT                1ST DSECT FOR EMPLOYEE TABLE ENTRY                            
+000000                               94 $PEMPID  DS    PL5            packs into 5 bytes                                            
+000005                               95 $PHRPAY  DS    PL3            packs into 3 bytes                                            
+000008                               96 $PHOURS  DS    PL3            packs into 3 bytes                                            
+00000B                               97 $PDEDUCT DS    PL3            packs into 3 bytes                                            
+00000E                               98 $PBONUS  DS    PL3            packs into 3 bytes                                            
+000011                               99 $EMPNME  DS    CL25                                                                         
+                                    100 *                                                                                           
+000000                              101 $RECORD  DSECT                DSECT FOR EACH INPUT RECORD                                   
+000000                              102 $IEMPID  DS    ZL8            packs into 5 bytes                                            
+000008                              103 $IHRPAY  DS    ZL5            packs into 3 bytes                                            
+00000D                              104 $IHOURS  DS    ZL5            packs into 3 bytes                                            
+000012                              105 $IDEDUCT DS    ZL5            packs into 3 bytes                                            
+000017                              106 $IBONUS  DS    ZL5            packs into 3 bytes                                            
+00001C                              107 $IEMPNME DS    CL25                                                                         
+                                    108 *                                                                                           
+                                    109 * BUILDTBL CONTROL SECTION                                                                  
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    110 *                                                                                           
+001470                              111 BUILDTBL CSECT                                                                              
+                                    112 *                                                                                           
+                                    113 * STANDARD ENTRY LINKAGE WITH R12 AS BASE REGISTER                                          
+                                    114 *                                                                                           
+001470 90EC D00C            0000C   115          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+001474 18CF                         116          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+001470                              117          USING BUILDTBL,12    ESTABLISH R12 AS THE BASE REG                                 
+001476 41E0 C084            014F4   118          LA    14,BTSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                          
+00147A 50E0 D008            00008   119          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+00147E 50D0 E004            00004   120          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+001482 18DE                         121          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    122 *                                                                                           
+001484 9825 1000            00000   123          LM    2,5,0(1)       R2 -> PFWHPCT(4) PACKED                                       
+                                    124 *                             R3 -> PSWHPCT(4) PACKED                                       
+                                    125 *                             R4 -> EMPTBL                                                  
+                                    126 *                             R5 -> PEMPCTR(3) PACKED                                       
+                                    127 *                                                                                           
+001488 E000 C0CC 0050 0153C         128          XREAD RECORD,80           READ 1ST RECORD FOR PCTS                                 
+00148E F235 2000 C0CC 00000 0153C   129          PACK  0(4,2),RECORD(6)    PACK FED WH PCT                                          
+001494 F235 3000 C0D2 00000 01542   130          PACK  0(4,3),RECORD+6(6)  PACK ST WH PCT                                           
+                                    131 *                                                                                           
+000000                              132          USING $TBLENT1,4     EATABLISH ADDRESSABILITY FOR TABLE ENTRY                      
+00149A 4160 C0CC            0153C   133          LA    6,RECORD       R6 -> BEGINNING OF THE INPUT RECORD                           
+000000                              134          USING $RECORD,6      ESTABLISH ADDRESSABILITY FOR RECORD                           
+                                    135 *                                                                                           
+00149E E000 C0CC 0050 0153C         136          XREAD RECORD,80      READ FIRST CUSTOMER RECORD                                    
+                                    137 *                                                                                           
+0014A4 4770 C070            014E0   138 LOOP1    BNZ   ENDLOOP1       BRANCH IF NO RECORD                                           
+                                    139 *                                                                                           
+0014A8 FA20 5000 C080 00000 014F0   140          AP    0(3,5),=PL1'1' ADD 1 TO ACCOUNT COUNTER                                      
+                                    141 *                                                                                           
+0014AE F247 4000 6000 00000 00000   142          PACK  $PEMPID(5),$IEMPID(8)     PACK EMPID                                         
+0014B4 F224 4005 6008 00005 00008   143          PACK  $PHRPAY(3),$IHRPAY(5)     PACK HOURLY PAY                                    
+0014BA F224 4008 600D 00008 0000D   144          PACK  $PHOURS(3),$IHOURS(5)     PACK HOURS WORKED                                  
+0014C0 F224 400B 6012 0000B 00012   145          PACK  $PDEDUCT(3),$IDEDUCT(5)   PACK DEDUCTIONS                                    
+0014C6 F224 400E 6017 0000E 00017   146          PACK  $PBONUS(3),$IBONUS(5)     PACK BONUS                                         
+0014CC D218 4011 601C 00011 0001C   147          MVC   $EMPNME(25),$IEMPNME      MOVE EMP NAME                                      
+                                    148 *                                                                                           
+0014D2 4140 402A            0002A   149          LA    4,42(,4)       R4 -> NEXT ENTRY IN TABLE                                     
+                                    150 *                                                                                           
+0014D6 E000 C0CC 0050 0153C         151          XREAD RECORD,80      READ NEXT RECORD                                              
+                                    152 *                                                                                           
+0014DC 47F0 C034            014A4   153          B     LOOP1          BRANCH BACK TO TOP OF LOOP1                                   
+                                    154 *                                                                                           
+0014E0                              155          DROP  6,4                                                                          
+                                    156 *                                                                                           
+                                    157 * STANDARD EXIT LINKAGE WITH RC OF 0                                                        
+                                    158 *                                                                                           
+0014E0 1BFF                         159 ENDLOOP1 SR    15,15          R15 = RETURN CODE OF 0                                        
+0014E2 58D0 D004            00004   160          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+0014E6 58E0 D00C            0000C   161          L     14,12(,13)     RESTORE REGISTER 14                                           
+0014EA 980C D014            00014   162          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+0014EE 07FE                         163          BR    14             RETURN TO CALLER                                              
+                                    164 *                                                                                           
+                                    165          LTORG                LITERAL ORGANIZATION                                          
+0014F0 1C                           166                =PL1'1'                                                                      
+
+                                                                                                               PAGE    4            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    167 *                                                                                           
+0014F4                              168 BTSAVE   DS    18F            REGISTER SAVE AREA                                            
+                                    169 *                                                                                           
+00153C                              170 RECORD   DS    CL80                                                                         
+                                    171 *                                                                                           
+                                    172 *        END   BUILDTBL   NOT AN ACTUAL END STATEMENT BUT HELPS TO                          
+                                    173 *                         RECOGNIZE WHERE BUILDTBL ENDS AND THE NEXT                        
+                                    174 *                         CSECT BEGINS                                                      
+                                    175 *                                                                                           
+                                    176 *****************************************************************                           
+                                    177 *                                                               *                           
+                                    178 *              THIS IS THE PROCTBL SUBPROGRAM                   *                           
+                                    179 *                                                               *                           
+                                    180 *****************************************************************                           
+                                    181 *                                                               *                           
+                                    182 * THIS SUBPROGRAM WILL PROCESS THE EMPLOYEE TABLE THAT WAS      *                           
+                                    183 * BUILT BY BUILDTBL. IT WILL ORGANIZE THE DATA AND PERFORM      *                           
+                                    184 * THE CALCULATIONS USING THE CALCNPAY SUBPROGRAM AND PRINT THE  *                           
+                                    185 * CORRECT INFORMATION. IT WILL KEEP TOTALS SO THEY CAN BE       *                           
+                                    186 * DISPLAYED AND AVERAGES CAN BE CALCULATED USING THE CALCAVG    *                           
+                                    187 * SUBPROGRAM                                                    *                           
+                                    188 *                                                               *                           
+                                    189 *****************************************************************                           
+                                    190 *                                                                                           
+                                    191 * DUMMY STORAGE FOR PROCTBL                                                                 
+                                    192 *                                                                                           
+000000                              193 $TBLENT2 DSECT                2ND DSECT FOR ACCOUNT HOLDER TBL ENTRY                        
+000000                              194 $PEMPID2 DS    PL5            packs into 5 bytes                                            
+000005                              195 $PHRPAY2 DS    PL3            packs into 3 bytes                                            
+000008                              196 $PHOURS2 DS    PL3            packs into 3 bytes                                            
+00000B                              197 $PDDUCT2 DS    PL3            packs into 3 bytes                                            
+00000E                              198 $PBONUS2 DS    PL3            packs into 3 bytes                                            
+000011                              199 $EMPNME2 DS    CL25                                                                         
+                                    200 *                                                                                           
+                                    201 * PROCTBL CONTROL SECTION                                                                   
+                                    202 *                                                                                           
+001590                              203 PROCTBL  CSECT                                                                              
+                                    204 *                                                                                           
+                                    205 * STANDARD ENTRY LINKAGE WITH R12 AS BASE REGISTER                                          
+                                    206 *                                                                                           
+001590 90EC D00C            0000C   207          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+001594 18CF                         208          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+001590                              209          USING PROCTBL,12     ESTABLISH R12 AS THE BASE REG                                 
+001596 41E0 C2EC            0187C   210          LA    14,PTSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                          
+00159A 50E0 D008            00008   211          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+00159E 50D0 E004            00004   212          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+0015A2 18DE                         213          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    214 *                                                                                           
+0015A4 9825 1000            00000   215          LM    2,5,0(1)       R2 -> PFWHPCT(4) PACKED                                       
+                                    216 *                             R3 -> PSWHPCT(4) PACKED                                       
+                                    217 *                             R4 -> EMPTBL                                                  
+                                    218 *                             R5 -> PEMPCTR(3) PACKED                                       
+                                    219 *                                                                                           
+0015A8 4190 0063            00063   220          LA    9,99           SET LINE COUNTER                                              
+                                    221 *                                                                                           
+0015AC 5020 C3A0            01930   222          ST    2,CNPPARMS+8   STORE FED PCT TO PARMS                                        
+0015B0 5030 C3A8            01938   223          ST    3,CNPPARMS+16  STORE ST PCT TO PARMS                                         
+
+                                                                                                               PAGE    5            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0015B4 5050 C3B4            01944   224          ST    5,CAPARMS+4    STORE EMPCT TO PARMS                                          
+                                    225 *                                                                                           
+                                    226 *                                                                                           
+0015B8 F872 C390 5000 01920 00000   227          ZAP   DBLWORD(8),0(3,5)  PUT EMPCTR IN DOUBLE WORD                                 
+0015BE 4F60 C390            01920   228          CVB   6,DBLWORD          CONVERT EMPCTR TO BINARY IN R6                            
+                                    229 *                                                                                           
+000000                              230          USING $TBLENT2,4     EST. ADDRESSABILITY FOR TBL ENTRY DSECT                       
+                                    231 *                                                                                           
+0015C2 9240 C3BD      0194D         232 LOOP2    MVI   DETAIL+1,C' '           ADD SPACES TO DETAIL LINE                            
+0015C6 D282 C3BE C3BD 0194E 0194D   233          MVC   DETAIL+2(131),DETAIL+1                                                       
+                                    234 *                                                                                           
+0015CC 4190 9001            00001   235          LA 9,1(,9)                    INCREMENT LINE COUNTER                               
+                                    236 *                                                                                           
+0015D0 D209 C3BD C2C4 0194D 01854   237          MVC   OEMPID(10),=X'21202060202020202020'                                          
+0015D6 DE09 C3BD 4000 0194D 00000   238          ED    OEMPID(10),$PEMPID2     DISPLAY EMP ID NUM                                   
+                                    239 *                                                                                           
+0015DC D218 C3C9 4011 01959 00011   240          MVC   OEMPNME(25),$EMPNME2    COPY EMP NAME TO DETAIL LINE                         
+                                    241 *                                                                                           
+0015E2 4110 C3E8            01978   242          LA    1,OHRPAY+3              SET OFF 3B IN R1                                     
+0015E6 D206 C3E5 C2DC 01975 0186C   243          MVC   OHRPAY(7),=X'402021204B2020'                                                 
+0015EC DF06 C3E5 4005 01975 00005   244          EDMK  OHRPAY(7),$PHRPAY2      DISPLAY PAY RATE                                     
+0015F2 0610                         245          BCTR  1,0                     DECREMENT R1                                         
+0015F4 925B 1000      00000         246          MVI   0(1),C'$'               SET $                                                
+                                    247 *                                                                                           
+0015F8 D206 C3EF C2DC 0197F 0186C   248          MVC   OHOURS(7),=X'402021204B2020'                                                 
+0015FE DE06 C3EF 4008 0197F 00008   249          ED    OHOURS(7),$PHOURS2      DISPLAY HOURS WORKED                                 
+                                    250 *                                                                                           
+                                    251 * CALCULATE GROSS PAY                                                                       
+                                    252 *                                                                                           
+001604 F852 C345 4005 018D5 00005   253          ZAP   PEMPGPAY(6),$PHRPAY2(3) ZERO AND ADD PAYRATE TO GROSS                        
+00160A FC52 C345 4008 018D5 00008   254          MP    PEMPGPAY(6),$PHOURS2(3) MULTIPLY GROSS BY HOURS                              
+001610 F055 C345 003E 018D5 0003E   255          SRP   PEMPGPAY(6),64-2,5      SHIFT AND ROUND                                      
+001616 FB52 C345 400B 018D5 0000B   256          SP    PEMPGPAY(6),$PDDUCT2(3) SUBTRACT DEDUCTIONS                                  
+00161C FA52 C345 400E 018D5 0000E   257          AP    PEMPGPAY(6),$PBONUS2(3) ADD BONUSES                                          
+                                    258 *                                                                                           
+001622 4110 C406            01996   259          LA    1,OEMPGPAY+8            SET OFF 8B IN R1                                     
+001626 D20B C3FE C2A8 0198E 01838   260          MVC   OEMPGPAY(12),=X'40202020206B2021204B2020'                                    
+00162C DF0B C3FE C346 0198E 018D6   261          EDMK  OEMPGPAY(12),PEMPGPAY+1 DISPLAY GROSS PAY                                    
+001632 0610                         262          BCTR  1,0                     DECREMENT R1                                         
+001634 925B 1000      00000         263          MVI   0(1),C'$'               SET $                                                
+                                    264 *                                                                                           
+001638 FA65 C35D C345 018ED 018D5   265          AP    PTGRPAY(7),PEMPGPAY(6)  ADD TO THE TOTAL GROSS PAY                           
+                                    266 *                                                                                           
+                                    267 * CALL THE CALCNPAY SUBPROGRAM                                                              
+                                    268 *                                                                                           
+00163E 4110 C398            01928   269          LA    1,CNPPARMS              LOAD PARMS INTO R1                                   
+001642 58F0 C2B4            01844   270          L     15,=V(CALCNPAY)         LOAD VIRTUAL INTO 15                                 
+001646 05EF                         271          BALR  14,15                   BRANCH AND LINK                                      
+                                    272 *                                                                                           
+001648 FA65 C364 C34B 018F4 018DB   273          AP    PTFWITH(7),PFEDWITH(6)  ADD TO THE TOTAL FED WITH                            
+00164E FA65 C36B C351 018FB 018E1   274          AP    PTSWITH(7),PSTWITH(6)   ADD TO THE TOTAL ST WITH                             
+001654 FA65 C372 C357 01902 018E7   275          AP    PTNETPAY(7),PEMPNPAY(6) ADD TO THE TOTAL NET PAY                             
+                                    276 *                                                                                           
+00165A 4110 C41A            019AA   277          LA    1,OFEDWITH+8            SET OFF 8B IN R1                                     
+00165E D20B C412 C2A8 019A2 01838   278          MVC   OFEDWITH(12),=X'40202020206B2021204B2020'                                    
+001664 DF0B C412 C34C 019A2 018DC   279          EDMK  OFEDWITH(12),PFEDWITH+1 DISPLAY FED WITHHOLDING                              
+00166A 0610                         280          BCTR  1,0                     DECREMENT R1                                         
+
+                                                                                                               PAGE    6            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00166C 925B 1000      00000         281          MVI   0(1),C'$'               SET $                                                
+                                    282 *                                                                                           
+001670 4110 C42C            019BC   283          LA    1,OSTWITH+8             SET OFF 8B IN R1                                     
+001674 D20B C424 C2A8 019B4 01838   284          MVC   OSTWITH(12),=X'40202020206B2021204B2020'                                     
+00167A DF0B C424 C352 019B4 018E2   285          EDMK  OSTWITH(12),PSTWITH+1   DISPLAY ST WITHHOLDING                               
+001680 0610                         286          BCTR  1,0                     DECREMENT R1                                         
+001682 925B 1000      00000         287          MVI   0(1),C'$'               SET $                                                
+                                    288 *                                                                                           
+001686 4110 C43D            019CD   289          LA    1,OEMPNPAY+8            SET OFF 8B IN R1                                     
+00168A D20B C435 C2A8 019C5 01838   290          MVC   OEMPNPAY(12),=X'40202020206B2021204B2020'                                    
+001690 DF0B C435 C358 019C5 018E8   291          EDMK  OEMPNPAY(12),PEMPNPAY+1 DISPLAY NET PAY                                      
+001696 0610                         292          BCTR  1,0                     DECREMENT R1                                         
+001698 925B 1000      00000         293          MVI   0(1),C'$'               SET $                                                
+                                    294 *                                                                                           
+00169C 5990 C2B8            01848   295          C     9,=F'16'                COMPARE REG9 TO 16                                   
+                                    296 *                                                                                           
+0016A0 47D0 C146            016D6   297 LOOP3    BC    B'1101',ENDLOOP3  BRANCH TO ENDLOOP 3 IF CND NOT MET                         
+                                    298 *                                                                                           
+0016A4 FA10 C379 C2E3 01909 01873   299          AP    PPAGECTR(2),=PL1'1'     INCREMENT PAGE COUNTER                               
+                                    300 *                                                                                           
+0016AA D203 C4C2 C2BC 01A52 0184C   301          MVC   OPAGE(4),=X'40202120'                                                        
+0016B0 DE03 C4C2 C379 01A52 01909   302          ED    OPAGE(4),PPAGECTR       DISPLAY PAGE COUNT                                   
+                                    303 *                                                                                           
+                                    304 * PRINT HEADER FOR NEW PAGE                                                                 
+                                    305 *                                                                                           
+0016B6 E020 C441 0085 019D1         306          XPRNT HEADER1,133             PRINT                                                
+0016BC E020 C4C6 0085 01A56         307          XPRNT HEADER2,133             PRINT                                                
+0016C2 E020 C65F 0085 01BEF         308          XPRNT COLHDR1,133             PRINT                                                
+0016C8 E020 C6E4 0085 01C74         309          XPRNT COLHDR2,133             PRINT                                                
+0016CE E020 C769 0085 01CF9         310          XPRNT HYPHENS1,133            PRINT                                                
+                                    311 *                                                                                           
+0016D4 1B99                         312          SR    9,9                     SET LINE COUNTER BACK TO 0                           
+                                    313 *                                                                                           
+0016D6                              314 ENDLOOP3 DS    0H                                                                           
+                                    315 *                                                                                           
+0016D6 E020 C3BC 0085 0194C         316          XPRNT DETAIL,133     PRINT THE DETAIL LINE                                         
+                                    317 *                                                                                           
+0016DC 4140 402A            0002A   318          LA    4,42(,4)       ADVANCE TO NEXT TABLE ENTRY                                   
+                                    319 *                                                                                           
+0016E0 4660 C032            015C2   320          BCT   6,LOOP2        IF ANOTHER ENTRY, BRANCH BACK TO LOOP2                        
+                                    321 *                                                                                           
+0016E4                              322          DROP  4              DROP R4                                                       
+                                    323 *                                                                                           
+0016E4 FA10 C379 C2E3 01909 01873   324          AP    PPAGECTR(2),=PL1'1'     INCREMENT PAGE COUNTER                               
+                                    325 *                                                                                           
+                                    326 * MOVE VALUES TO DISPLAY IN TOTALS                                                          
+                                    327 *                                                                                           
+0016EA D203 C4C2 C2BC 01A52 0184C   328          MVC   OPAGE(4),=X'40202120'                                                        
+0016F0 DE03 C4C2 C379 01A52 01909   329          ED    OPAGE(4),PPAGECTR       DISPLAY PAGE COUNT                                   
+                                    330 *                                                                                           
+0016F6 D204 C816 C2E4 01DA6 01874   331          MVC   OEMPCTR(5),=X'2020202120'                                                    
+0016FC DE04 C816 5000 01DA6 00000   332          ED    OEMPCTR(5),0(5)         DISPLAY EMP COUNT                                    
+                                    333 *                                                                                           
+001702 4110 C89E            01E2E   334          LA    1,OTGPAY+10             SET OFF 10B IN R1                                    
+001706 D20D C894 C2CE 01E24 0185E   335          MVC   OTGPAY(14),=X'402020202020206B2021204B2020'                                  
+00170C DF0D C894 C35E 01E24 018EE   336          EDMK  OTGPAY(14),PTGRPAY+1    DISPLAY TOTAL GROSS PAY                              
+001712 0610                         337          BCTR  1,0                     DECREMENT R1                                         
+
+                                                                                                               PAGE    7            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+001714 925B 1000      00000         338          MVI   0(1),C'$'               SET $                                                
+                                    339 *                                                                                           
+001718 4110 C923            01EB3   340          LA    1,OTFWITH+10            SET OFF 10B IN R1                                    
+00171C D20D C919 C2CE 01EA9 0185E   341          MVC   OTFWITH(14),=X'402020202020206B2021204B2020'                                 
+001722 DF0D C919 C365 01EA9 018F5   342          EDMK  OTFWITH(14),PTFWITH+1   DISPLAY TOTAL FED WH                                 
+001728 0610                         343          BCTR  1,0                     DECREMENT R1                                         
+00172A 925B 1000      00000         344          MVI   0(1),C'$'               SET $                                                
+                                    345 *                                                                                           
+00172E 4110 C9A8            01F38   346          LA    1,OTSTWITH+10           SET OFF 10B IN R1                                    
+001732 D20D C99E C2CE 01F2E 0185E   347          MVC   OTSTWITH(14),=X'402020202020206B2021204B2020'                                
+001738 DF0D C99E C36C 01F2E 018FC   348          EDMK  OTSTWITH(14),PTSWITH+1  DISPLAY TOTAL STATE WH                               
+00173E 0610                         349          BCTR  1,0                     DECREMENT R1                                         
+001740 925B 1000      00000         350          MVI   0(1),C'$'               SET $                                                
+                                    351 *                                                                                           
+001744 4110 CA2D            01FBD   352          LA    1,OTNPAY+10             SET OFF 10B IN R1                                    
+001748 D20D CA23 C2CE 01FB3 0185E   353          MVC   OTNPAY(14),=X'402020202020206B2021204B2020'                                  
+00174E DF0D CA23 C373 01FB3 01903   354          EDMK  OTNPAY(14),PTNETPAY+1   DISPLAY TOTAL NET PAY                                
+001754 0610                         355          BCTR  1,0                     DECREMENT R1                                         
+001756 925B 1000      00000         356          MVI   0(1),C'$'               SET $                                                
+                                    357 *                                                                                           
+                                    358 * CALL THE CALCAVG SUBPROGRAM FOR GROSS PAY                                                 
+                                    359 *                                                                                           
+00175A D206 C385 C35D 01915 018ED   360          MVC   PTOTAL(7),PTGRPAY       MOVE TOTAL GROSS PAY TO PTOTAL                       
+001760 4110 C3B0            01940   361          LA    1,CAPARMS               LOAD PARMS INTO R1                                   
+001764 58F0 C2C0            01850   362          L     15,=V(CALCAVG)          LOAD VIRTUAL INTO 15                                 
+001768 05EF                         363          BALR  14,15                   BRANCH AND LINK                                      
+                                    364 *                                                                                           
+00176A 4110 C8D2            01E62   365          LA    1,OAGPAY+10             SET OFF 10B IN R1                                    
+00176E D20D C8C8 C2CE 01E58 0185E   366          MVC   OAGPAY(14),=X'402020202020206B2021204B2020'                                  
+001774 DF0D C8C8 C37C 01E58 0190C   367          EDMK  OAGPAY(14),PAVG+1       DISPLAY AVG GROSS PAY                                
+00177A 0610                         368          BCTR  1,0                     DECREMENT R1                                         
+00177C 925B 1000      00000         369          MVI   0(1),C'$'               SET $                                                
+                                    370 *                                                                                           
+                                    371 * CALL THE CALCAVG SUBPROGRAM FOR FEDERAL WITHHOLDING                                       
+                                    372 *                                                                                           
+001780 D206 C385 C364 01915 018F4   373          MVC   PTOTAL(7),PTFWITH       MOVE TOTAL FED WITH TO PTOTAL                        
+001786 4110 C3B0            01940   374          LA    1,CAPARMS               LOAD PARMS INTO R1                                   
+00178A 58F0 C2C0            01850   375          L     15,=V(CALCAVG)          LOAD VIRTUAL INTO 15                                 
+00178E 05EF                         376          BALR  14,15                   BRANCH AND LINK                                      
+                                    377 *                                                                                           
+001790 4110 C957            01EE7   378          LA    1,OAFWITH+10            SET OFF 10B IN R1                                    
+001794 D20D C94D C2CE 01EDD 0185E   379          MVC   OAFWITH(14),=X'402020202020206B2021204B2020'                                 
+00179A DF0D C94D C37C 01EDD 0190C   380          EDMK  OAFWITH(14),PAVG+1      DISPLAY AVG FED WITH                                 
+0017A0 0610                         381          BCTR  1,0                     DECREMENT R1                                         
+0017A2 925B 1000      00000         382          MVI   0(1),C'$'               SET $                                                
+                                    383 *                                                                                           
+                                    384 * CALL THE CALCAVG SUBPROGRAM FOR STATE WITHHOLDING                                         
+                                    385 *                                                                                           
+0017A6 D206 C385 C36B 01915 018FB   386          MVC   PTOTAL(7),PTSWITH       MOVE TOTAL ST WITH TO PTOTAL                         
+0017AC 4110 C3B0            01940   387          LA    1,CAPARMS               LOAD PARMS INTO R1                                   
+0017B0 58F0 C2C0            01850   388          L     15,=V(CALCAVG)          LOAD VIRTUAL INTO 15                                 
+0017B4 05EF                         389          BALR  14,15                   BRANCH AND LINK                                      
+                                    390 *                                                                                           
+0017B6 4110 C9DC            01F6C   391          LA    1,OASWITH+10            SET OFF 10B IN R1                                    
+0017BA D20D C9D2 C2CE 01F62 0185E   392          MVC   OASWITH(14),=X'402020202020206B2021204B2020'                                 
+0017C0 DF0D C9D2 C37C 01F62 0190C   393          EDMK  OASWITH(14),PAVG+1      DISPLAY AVG ST WITH                                  
+0017C6 0610                         394          BCTR  1,0                     DECREMENT R1                                         
+
+                                                                                                               PAGE    8            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0017C8 925B 1000      00000         395          MVI   0(1),C'$'               SET $                                                
+                                    396 *                                                                                           
+                                    397 * CALL THE CALCAVG SUBPROGRAM FOR NET PAY                                                   
+                                    398 *                                                                                           
+0017CC D206 C385 C372 01915 01902   399          MVC   PTOTAL(7),PTNETPAY      MOVE TOTAL NET PAY TO PTOTAL                         
+0017D2 4110 C3B0            01940   400          LA    1,CAPARMS               LOAD PARMS INTO R1                                   
+0017D6 58F0 C2C0            01850   401          L     15,=V(CALCAVG)          LOAD VIRTUAL INTO 15                                 
+0017DA 05EF                         402          BALR  14,15                   BRANCH AND LINK                                      
+                                    403 *                                                                                           
+0017DC 4110 CA61            01FF1   404          LA    1,OANPAY+10             SET OFF 10B IN R1                                    
+0017E0 D20D CA57 C2CE 01FE7 0185E   405          MVC   OANPAY(14),=X'402020202020206B2021204B2020'                                  
+0017E6 DF0D CA57 C37C 01FE7 0190C   406          EDMK  OANPAY(14),PAVG+1       DISPLAY AVG NET PAY                                  
+0017EC 0610                         407          BCTR  1,0                     DECREMENT R1                                         
+0017EE 925B 1000      00000         408          MVI   0(1),C'$'               SET $                                                
+                                    409 *                                                                                           
+                                    410 * PRINT TOTALS                                                                              
+                                    411 *                                                                                           
+0017F2 E020 C441 0085 019D1         412          XPRNT HEADER1,133             PRINT                                                
+0017F8 E020 C4C6 0085 01A56         413          XPRNT HEADER2,133             PRINT                                                
+0017FE E020 C5DA 0085 01B6A         414          XPRNT HEADER4,133             PRINT                                                
+001804 E020 C7EE 0085 01D7E         415          XPRNT TOTALS1,133             PRINT                                                
+00180A E020 C874 0085 01E04         416          XPRNT TOTALS2,133             PRINT                                                
+001810 E020 C8F9 0085 01E89         417          XPRNT TOTALS3,133             PRINT                                                
+001816 E020 C97E 0085 01F0E         418          XPRNT TOTALS4,133             PRINT                                                
+00181C E020 CA03 0085 01F93         419          XPRNT TOTALS5,133             PRINT                                                
+                                    420 *                                                                                           
+                                    421 * STANDARD EXIT LINKAGE WITH RC OF 0                                                        
+                                    422 *                                                                                           
+001822 1BFF                         423          SR    15,15          R15 = RETURN CODE OF 0                                        
+001824 58D0 D004            00004   424          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+001828 58E0 D00C            0000C   425          L     14,12(,13)     RESTORE REGISTER 14                                           
+00182C 980C D014            00014   426          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+001830 07FE                         427          BR    14             RETURN TO CALLER                                              
+                                    428 *                                                                                           
+                                    429          LTORG                LITERAL ORGANIZATION                                          
+001838 40202020206B2021             430                =X'40202020206B2021204B2020'                                                 
+001844 00002018                     431                =V(CALCNPAY)                                                                 
+001848 00000010                     432                =F'16'                                                                       
+00184C 40202120                     433                =X'40202120'                                                                 
+001850 000020E0                     434                =V(CALCAVG)                                                                  
+001854 2120206020202020             435                =X'21202060202020202020'                                                     
+00185E 402020202020206B             436                =X'402020202020206B2021204B2020'                                             
+00186C 402021204B2020               437                =X'402021204B2020'                                                           
+001873 1C                           438                =PL1'1'                                                                      
+001874 2020202120                   439                =X'2020202120'                                                               
+                                    440 *                                                                                           
+00187C                              441 PTSAVE   DS    18F            REGISTER SAVE AREA                                            
+                                    442 *                                                                                           
+                                    443 * PACKED DECIMAL STORAGE                                                                    
+                                    444 *                                                                                           
+0018C4 000000000C                   445 PEMPID   DC    PL5'0'         PACKED EMPLOYEE ID                                            
+0018C9 00000C                       446 PHRPAY   DC    PL3'0'         PACKED EMPLOYEE HOURLY PAY RATE                               
+0018CC 00000C                       447 PHOURS   DC    PL3'0'         PACKED EMPLOYEE HOURS WORKED                                  
+0018CF 00000C                       448 PDEDUCT  DC    PL3'0'         PACKED EMPLOYEE DEDUCTION                                     
+0018D2 00000C                       449 PBONUS   DC    PL3'0'         PACKED EMPLOYEE BONUS                                         
+0018D5 00000000000C                 450 PEMPGPAY DC    PL6'0'         PACKED CALCULATED EMPLOYEE GROSS PAY                          
+0018DB 00000000000C                 451 PFEDWITH DC    PL6'0'         PACKED CALCULATED FEDERAL WITHHOLDING                         
+
+                                                                                                               PAGE    9            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0018E1 00000000000C                 452 PSTWITH  DC    PL6'0'         PACKED CALCULATED STATE WITHHOLDING                           
+0018E7 00000000000C                 453 PEMPNPAY DC    PL6'0'         PACKED CALCULATED EMPLOYEE NET PAY                            
+                                    454 *                                                                                           
+0018ED 0000000000000C               455 PTGRPAY  DC    PL7'0'         PACKED TOTAL GROSS EMPLOYEE PAY                               
+0018F4 0000000000000C               456 PTFWITH  DC    PL7'0'         PACKED TOTAL FED WITHHOLDING                                  
+0018FB 0000000000000C               457 PTSWITH  DC    PL7'0'         PACKED TOTAL STATE WITHHOLDING                                
+001902 0000000000000C               458 PTNETPAY DC    PL7'0'         PACKED TOTAL NET EMPLOYEE PAY                                 
+                                    459 *                                                                                           
+001909 000C                         460 PPAGECTR DC    PL2'0'         PACKED PAGE COUNTER (MAX 999)                                 
+                                    461 *                                                                                           
+00190B 0000000000000000             462 PAVG     DC    PL10'0'                                                                      
+001915 0000000000000C               463 PTOTAL   DC    PL7'0'                                                                       
+                                    464 *                                                                                           
+001920 0000000000000000             465 DBLWORD  DC    D'0'           DOUBLEWORD ON DOUBLEWORD BOUNDARY                             
+                                    466 *                                                                                           
+                                    467 * PARMS LIST FOR CALCNPAY SUBPROGRAM                                                        
+                                    468 *                                                                                           
+001928 000018D5                     469 CNPPARMS DC    A(PEMPGPAY) <- declared in PROCTBL                                           
+00192C 000018E7                     470          DC    A(PEMPNPAY) <- declared in PROCTBL                                           
+001930 00000000                     471          DC    A(0) <- declared in PAYROLL3 and passed into PROCTBL                         
+001934 000018DB                     472          DC    A(PFEDWITH) <- declared in PROCTBL                                           
+001938 00000000                     473          DC    A(0) <- declared in PAYROLL3 and passed into PROCTBL                         
+00193C 000018E1                     474          DC    A(PSTWITH) <- declared in PROCTBL                                            
+                                    475 *                                                                                           
+                                    476 * PARMS LIST FOR CALCAVG SUBPROGRAM                                                         
+                                    477 *                                                                                           
+001940 00001915                     478 CAPARMS  DC    A(PTOTAL) <- DELACRED IN PROCTBL                                             
+001944 00000000                     479          DC    A(0)      <- DECLARED IN PAYROLL3                                            
+001948 0000190B                     480          DC    A(PAVG)   <- DECLARED IN PROCTBL                                             
+                                    481 *                                                                                           
+                                    482 * OUTPUT FIELDS                                                                             
+                                    483 *                                                                                           
+00194C F0                           484 DETAIL   DC    C'0'   CARRIAGE CONTROL CHARACTER                                            
+00194D                              485 OEMPID   DS    CL10   OUTPUT FIELD FOR EMPLOYEE NAME                                        
+001957 4040                         486          DC    2C' '  SPACES                                                                
+001959                              487 OEMPNME  DS    CL25   OUTPUT FIELD FOR EMPLOYEE ID                                          
+001972 404040                       488          DC    3C' '  SPACES                                                                
+001975                              489 OHRPAY   DS    CL7    OUTPUT FIELD FOR PAY RATE                                             
+00197C 404040                       490          DC    3C' '  SPACES                                                                
+00197F                              491 OHOURS   DS    CL7    OUTPUT FIELD FOR HOURS WORKED                                         
+001986 4040404040404040             492          DC    8C' '  SPACES                                                                
+00198E                              493 OEMPGPAY DS    CL12   OUTPUT FIELD FOR GROSS PAY                                            
+00199A 4040404040404040             494          DC    8C' '  SPACES                                                                
+0019A2                              495 OFEDWITH DS    CL12   OUTPUT FIELD FOR FED WH                                               
+0019AE 404040404040                 496          DC    6C' '  SPACES                                                                
+0019B4                              497 OSTWITH  DS    CL12   OUTPUT FIELD FOR STATE WH                                             
+0019C0 4040404040                   498          DC    5C' '  SPACES                                                                
+0019C5                              499 OEMPNPAY DS    CL12   OUTPUT FIELD FOR NET PAY                                              
+                                    500 *                                                                                           
+0019D1 F0                           501 HEADER1  DC    C'0'       CARRIAGE CONTROL CHARACTER                                        
+0019D2 4040404040404040             502          DC    50C' '     SPACES                                                            
+001A04 E2E3C1E3C540D6C6             503          DC    C'STATE OF ILLINOIS NATIONAL BANK'                                           
+001A23 4040404040404040             504          DC    40C' '     SPACES                                                            
+001A4B D7C1C7C57A4040               505          DC    C'PAGE:  ' LABEL                                                             
+001A52                              506 OPAGE    DS    CL4        OUTPUT FIELD FOR PAGE NUMBER                                      
+                                    507 *                                                                                           
+001A56 40                           508 HEADER2  DC    C' '       CARRIAGE CONTROL CHARACTER                                        
+
+                                                                                                               PAGE   10            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+001A57 4040404040404040             509          DC    48C' '     SPACES                                                            
+001A87 E2C5D4C960D4D6D5             510          DC    C'SEMI-MONTHLY EMPLOYEE PAYROLL REPORT'                                      
+001AAB 4040404040404040             511          DC    58C' '     SPACES                                                            
+                                    512 *                                                                                           
+001AE5 40                           513 HEADER3  DC    C' '       CARRIAGE CONTROL CHARACTER                                        
+001AE6 4040404040404040             514          DC    132C' '    SPACES                                                            
+                                    515 *                                                                                           
+001B6A 40                           516 HEADER4  DC    C' '       CARRIAGE CONTROL CHARACTER                                        
+001B6B 4040404040404040             517          DC    63C' '     SPACES                                                            
+001BAA E3D6E3C1D3E2                 518          DC    C'TOTALS'  LABEL                                                             
+001BB0 4040404040404040             519          DC    63C' '     SPACES                                                            
+                                    520 *                                                                                           
+001BEF F0                           521 COLHDR1  DC    C'0'                    CARRIAGE CONTROL CHARACTER                           
+001BF0 C5D4D7D3D6E8C5C5             522          DC    C'EMPLOYEE'             LABEL                                                
+001BF8 404040                       523          DC    3C' '                   SPACES                                               
+001BFB C5D4D7D3D6E8C5C5             524          DC    C'EMPLOYEE'             LABEL                                                
+001C03 4040404040404040             525          DC    21C' '                  SPACES                                               
+001C18 C8D6E4D9D3E8                 526          DC    C'HOURLY'               LABEL                                                
+001C1E 4040404040                   527          DC    5C' '                   SPACES                                               
+001C23 C8D6E4D9E2                   528          DC    C'HOURS'                LABEL                                                
+001C28 4040404040404040             529          DC    12C' '                  SPACES                                               
+001C34 C5D4D7D3D6E8C5C5             530          DC    C'EMPLOYEE'             LABEL                                                
+001C3C 40404040                     531          DC    4C' '                   SPACES                                               
+001C40 C5D4D7D3D6E8C5C5             532          DC    C'EMPLOYEE FEDERAL'     LABEL                                                
+001C50 40404040                     533          DC    4C' '                   SPACES                                               
+001C54 C5D4D7D3D6E8C5C5             534          DC    C'EMPLOYEE STATE'       LABEL                                                
+001C62 4040404040404040             535          DC    10C' '                  SPACES                                               
+001C6C C5D4D7D3D6E8C5C5             536          DC    C'EMPLOYEE'             LABEL                                                
+                                    537 *                                                                                           
+001C74 40                           538 COLHDR2  DC    C' '                    CARRIAGE CONTROL CHARACTER                           
+001C75 C9C4                         539          DC    C'ID'                   LABEL                                                
+001C77 4040404040404040             540          DC    9C' '                   SPACES                                               
+001C80 D5C1D4C5                     541          DC    C'NAME'                 LABEL                                                
+001C84 4040404040404040             542          DC    28C' '                  SPACES                                               
+001CA0 D7C1E8                       543          DC    C'PAY'                  LABEL                                                
+001CA3 40404040                     544          DC    4C' '                   SPACES                                               
+001CA7 E6D6D9D2C5C4                 545          DC    C'WORKED'               LABEL                                                
+001CAD 4040404040404040             546          DC    11C' '                  SPACES                                               
+001CB8 C7D9D6E2E240D7C1             547          DC    C'GROSS PAY'            LABEL                                                
+001CC1 4040404040404040             548          DC    9C' '                   SPACES                                               
+001CCA E6C9E3C8C8D6D3C4             549          DC    C'WITHHOLDING'          LABEL                                                
+001CD5 40404040404040               550          DC    7C' '                   SPACES                                               
+001CDC E6C9E3C8C8D6D3C4             551          DC    C'WITHHOLDING'          LABEL                                                
+001CE7 4040404040404040             552          DC    11C' '                  SPACES                                               
+001CF2 D5C5E340D7C1E8               553          DC    C'NET PAY'              LABEL                                                
+                                    554 *                                                                                           
+001CF9 40                           555 HYPHENS1 DC    C' '         CARRIAGE CONTROL CHARACTER                                      
+001CFA 6060606060606060             556          DC    9C'-'        HYPHENS                                                         
+001D03 4040                         557          DC    2C' '        SPACE                                                           
+001D05 6060606060606060             558          DC    25C'-'       HYPHENS                                                         
+001D1E 404040                       559          DC    3C' '        SPACE                                                           
+001D21 60606060606060               560          DC    7C'-'        HYPHENS                                                         
+001D28 404040                       561          DC    3C' '        SPACE                                                           
+001D2B 60606060606060               562          DC    7C'-'        HYPHENS                                                         
+001D32 4040404040                   563          DC    5C' '        SPACE                                                           
+001D37 6060606060606060             564          DC    15C'-'       HYPHENS                                                         
+001D46 40404040                     565          DC    4C' '        SPACE                                                           
+
+                                                                                                               PAGE   11            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+001D4A 6060606060606060             566          DC    16C'-'       HYPHENS                                                         
+001D5A 40404040                     567          DC    4C' '        SPACE                                                           
+001D5E 6060606060606060             568          DC    14C'-'       HYPHENS                                                         
+001D6C 404040                       569          DC    3C' '        SPACE                                                           
+001D6F 6060606060606060             570          DC    15C'-'       HYPHENS                                                         
+                                    571 *                                                                                           
+001D7E F0                           572 TOTALS1  DC    C'0'          CARRIAGE CONTROL                                               
+001D7F 404040404040                 573          DC    6C' '         SPACES                                                         
+001D85 D5E4D4C2C5D940D6             574          DC    C'NUMBER OF EMPLOYEES:'         LABEL                                        
+001D99 4040404040404040             575          DC    13C' '        SPACES                                                         
+001DA6                              576 OEMPCTR  DS    CL5           OUTPUT FOR EMP CTR                                             
+001DAB 4040404040404040             577          DC    89C' '        SPACES                                                         
+                                    578 *                                                                                           
+001E04 F0                           579 TOTALS2  DC    C'0'          CARRIAGE CONTROL                                               
+001E05 4040404040404040             580          DC    10C' '        SPACES                                                         
+001E0F E3D6E3C1D340C7D9             581          DC    C'TOTAL GROSS PAY:'     LABEL                                                
+001E1F 4040404040                   582          DC    5C' '         SPACES                                                         
+001E24                              583 OTGPAY   DS    CL14          OUTPUT FOR TOT GROSS PAY                                       
+001E32 4040404040404040             584          DC    20C' '       SPACES                                                          
+001E46 C1E5C5D9C1C7C540             585          DC    C'AVERAGE GROSS PAY:'   LABEL                                                
+001E58                              586 OAGPAY   DS    CL14          OUTPUT FOR AVG GROSS PAY                                       
+001E66 4040404040404040             587          DC    35C' '        SPACES                                                         
+                                    588 *                                                                                           
+001E89 F0                           589 TOTALS3  DC    C'0'          CARRIAGE CONTROL                                               
+001E8A E3D6E3C1D340C6C5             590          DC    C'TOTAL FEDERAL WITHHOLDING:'                                                
+001EA4 4040404040                   591          DC    5C' '         SPACES                                                         
+001EA9                              592 OTFWITH  DS    CL12          OUTPUT FOR TOT FED WH                                          
+001EB5 4040404040404040             593          DC    12C' '        SPACES                                                         
+001EC1 C1E5C5D9C1C7C540             594          DC    C'AVERAGE FEDERAL WITHHOLDING:'                                              
+001EDD                              595 OAFWITH  DS    CL14          OUTPUT FOR AVG FED WH                                          
+001EEB 4040404040404040             596          DC    35C' '        SPACES                                                         
+                                    597 *                                                                                           
+001F0E F0                           598 TOTALS4  DC    C'0'          CARRIAGE CONTROL                                               
+001F0F 4040E3D6E3C1D340             599          DC    C'  TOTAL STATE WITHHOLDING:'                                                
+001F29 4040404040                   600          DC    5C' '         SPACES                                                         
+001F2E                              601 OTSTWITH DS    CL12          OUTPUT FOR TOT ST WH                                           
+001F3A 4040404040404040             602          DC    14C' '        SPACES                                                         
+001F48 C1E5C5D9C1C7C540             603          DC    C'AVERAGE STATE WITHHOLDING:'                                                
+001F62                              604 OASWITH  DS    CL14          OUTPUT FOR AVG ST WH                                           
+001F70 4040404040404040             605          DC    35C' '        SPACES                                                         
+                                    606 *                                                                                           
+001F93 F0                           607 TOTALS5  DC    C'0'          CARRIAGE CONTROL                                               
+001F94 4040404040404040             608          DC    12C' '        SPACES                                                         
+001FA0 E3D6E3C1D340D5C5             609          DC    C'TOTAL NET PAY:'                                                            
+001FAE 4040404040                   610          DC    5C' '         SPACES                                                         
+001FB3                              611 OTNPAY   DS    CL12          OUTPUT FOR TOT NET PAY                                         
+001FBF 4040404040404040             612          DC    24C' '        SPACES                                                         
+001FD7 C1E5C5D9C1C7C540             613          DC    C'AVERAGE NET PAY:'                                                          
+001FE7                              614 OANPAY   DS    CL14          OUTPUT FOR AVG NET PAY                                         
+001FF5 4040404040404040             615          DC    35C' '        SPACES                                                         
+                                    616 *                                                                                           
+                                    617 *        END   PROCTBL       NOT A REAL END STATEMENT BUT                                   
+                                    618 *                            INDICATION THAT PROCTBL HAS ENDED                              
+                                    619 *                                                                                           
+                                    620 *****************************************************************                           
+                                    621 *                                                               *                           
+                                    622 *              THIS IS THE CALCNPAY SUBPROGRAM                  *                           
+
+                                                                                                               PAGE   12            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    623 *                                                               *                           
+                                    624 *****************************************************************                           
+                                    625 *                                                               *                           
+                                    626 * THIS SUBPROGRAM WILL CALCULATE THE NET PAY FOR EACH EMPLOYEE  *                           
+                                    627 * IN THE TABLE. IT WILL RECIEVE THE GROSS PAY FOR THE CURRENT   *                           
+                                    628 * EMPLOYEE AND CALCULATE THE FED AND STATE WITHHOLDINGS AND THE *                           
+                                    629 * NET PAY.                                                      *                           
+                                    630 *                                                               *                           
+                                    631 *****************************************************************                           
+                                    632 *                                                                                           
+                                    633 * CALCNPAY CONTROL SECTION                                                                  
+                                    634 *                                                                                           
+002018                              635 CALCNPAY CSECT                                                                              
+                                    636 *                                                                                           
+                                    637 * STANDARD ENTRY LINKAGE WITH R12 AS BASE REGISTER                                          
+                                    638 *                                                                                           
+002018 90EC D00C            0000C   639          STM   14,12,12(13)     SAVE REGS IN CALLER'S SAVE AREA                             
+00201C 18CF                         640          LR    12,15            COPY CSECT ADDRESS INTO R12                                 
+002018                              641          USING CALCNPAY,12      ESTABLISH R12 AS THE BASE REG                               
+00201E 41E0 C070            02088   642          LA    14,CNPSAVE       R14 POINTS TO THIS CSECT'S SAVE AREA                        
+002022 50E0 D008            00008   643          ST    14,8(,13)        STORE ADDRESS OF THIS CSECT'S SAVE AREA                     
+002026 50D0 E004            00004   644          ST    13,4(,14)        STORE ADDRESS OF CALLER'S SAVE AREA                         
+00202A 18DE                         645          LR    13,14            POINT R13 AT THIS CSECT'S SAVE AREA                         
+                                    646 *                                                                                           
+00202C 9827 1000            00000   647          LM    2,7,0(1)         R2 -> PEMPGPAY (6)                                          
+                                    648 *                               R3 -> PEMPNPAY (6)                                          
+                                    649 *                               R4 -> PFWHPCT  (4)                                          
+                                    650 *                               R5 -> PFEDWITH (6)                                          
+                                    651 *                               R6 -> PSWHPCT  (4)                                          
+                                    652 *                               R7 -> PSTWITH  (6)                                          
+                                    653 *                                                                                           
+002030 F895 C0B8 2000 020D0 00000   654          ZAP   PCALC(10),0(6,2) ZERO AND ADD GPAY TO CALC                                   
+002036 FC93 C0B8 4000 020D0 00000   655          MP    PCALC(10),0(4,4) MULTIPLY BY FED WH PCT                                      
+00203C F095 C0B8 003B 020D0 0003B   656          SRP   PCALC(10),64-5,5 SHIFT AND ROUND                                             
+002042 F859 5000 C0B8 00000 020D0   657          ZAP   0(6,5),PCALC(10) STORE CALC IN PFEDWITH                                      
+                                    658 *                                                                                           
+002048 F895 C0B8 2000 020D0 00000   659          ZAP   PCALC(10),0(6,2) ZERO AND ADD GPAY TO CALC                                   
+00204E FC93 C0B8 6000 020D0 00000   660          MP    PCALC(10),0(4,6) MULTIPLY BY ST WH PCT                                       
+002054 F095 C0B8 003B 020D0 0003B   661          SRP   PCALC(10),64-5,5 SHIFT AND ROUND                                             
+00205A F859 7000 C0B8 00000 020D0   662          ZAP   0(6,7),PCALC(10) STORE CALC IN PSTWITH                                       
+                                    663 *                                                                                           
+002060 F855 3000 2000 00000 00000   664          ZAP   0(6,3),0(6,2)    STORE GPAY INTO NPAY                                        
+002066 FB55 3000 5000 00000 00000   665          SP    0(6,3),0(6,5)    SUBTRACT FEDWITH FROM NET                                   
+00206C FB55 3000 7000 00000 00000   666          SP    0(6,3),0(6,7)    SUBTRACT STWITH FROM NET                                    
+                                    667 *                                                                                           
+                                    668 * STANDARD EXIT LINKAGE WITH RC OF 0                                                        
+                                    669 *                                                                                           
+002072 1BFF                         670          SR    15,15            R15 = RETURN CODE OF 0                                      
+002074 58D0 D004            00004   671          L     13,4(,13)        POINT R13 TO CALLER'S SAVE AREA                             
+002078 58E0 D00C            0000C   672          L     14,12(,13)       RESTORE REGISTER 14                                         
+00207C 980C D014            00014   673          LM    0,12,20(13)      RESTORE R0 THRU R12                                         
+002080 07FE                         674          BR    14               RETURN TO CALLER                                            
+                                    675 *                                                                                           
+                                    676          LTORG                  LITERAL ORGANIZATION                                        
+                                    677 *                                                                                           
+002088                              678 CNPSAVE  DS    18F              REGISTER SAVE AREA                                          
+                                    679 *                                                                                           
+
+                                                                                                               PAGE   13            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    680 * PACKED DECIMAL STORAGE                                                                    
+                                    681 *                                                                                           
+0020D0 0000000000000000             682 PCALC    DC    PL10'0'          USED TO CALCULATE WITHHOLDING AND AVGS                      
+                                    683 *                                                                                           
+                                    684 *        END   CALCNPAY         END OF CALCNPAY                                             
+                                    685 *                                                                                           
+                                    686 *****************************************************************                           
+                                    687 *                                                               *                           
+                                    688 *               THIS IS THE CALCAVG SUBPROGRAM                  *                           
+                                    689 *                                                               *                           
+                                    690 *****************************************************************                           
+                                    691 *                                                               *                           
+                                    692 * THIS SUBPROGRAM WILL CALCULATE A SINGLE AVERAGE. IT NEEDS TO  *                           
+                                    693 * BE PASSED A TOTAL VALUE AND IT WILL DIVIDE THAT TOTAL BY THE  *                           
+                                    694 * NUMBER OF EMPLOYEES IN THE TABLE.                             *                           
+                                    695 *                                                               *                           
+                                    696 *****************************************************************                           
+                                    697 *                                                                                           
+                                    698 * CALCAVG CONTROL SECCTION                                                                  
+                                    699 *                                                                                           
+0020E0                              700 CALCAVG  CSECT                                                                              
+                                    701 *                                                                                           
+                                    702 * STANDARD ENTRY LINKAGE WITH R12 AS BASE REGISTER                                          
+                                    703 *                                                                                           
+0020E0 90EC D00C            0000C   704          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+0020E4 18CF                         705          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+0020E0                              706          USING CALCAVG,12     ESTABLISH R12 AS THE BASE REG                                 
+0020E6 41E0 C040            02120   707          LA    14,CAVGSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA                          
+0020EA 50E0 D008            00008   708          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+0020EE 50D0 E004            00004   709          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+0020F2 18DE                         710          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    711 *                                                                                           
+0020F4 9824 1000            00000   712          LM    2,4,0(1)       R2 -> PTOTAL (7)                                              
+                                    713 *                             R3 -> PEMPCTR (3)                                             
+                                    714 *                             R4 -> PAVG  (10)                                              
+                                    715 *                                                                                           
+0020F8 F896 4000 2000 00000 00000   716          ZAP   0(10,4),0(7,2) STORE TOTAL S WITH IN PCALC                                   
+0020FE F090 4000 0003 00000 00003   717          SRP   0(10,4),3,0    SHIFT 3 TO THE LEFT                                           
+002104 FD92 4000 3000 00000 00000   718          DP    0(10,4),0(3,3) DIVIDE TOT BY NUM OF EMPS                                     
+00210A F065 4000 003D 00000 0003D   719          SRP   0(7,4),64-3,5  SHIFT AND ROUND                                               
+                                    720 *                                                                                           
+                                    721 * STANDARD EXIT LINKAGE WITH RC OF 0                                                        
+                                    722 *                                                                                           
+002110 1BFF                         723          SR    15,15          R15 = RETURN CODE OF 0                                        
+002112 58D0 D004            00004   724          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+002116 58E0 D00C            0000C   725          L     14,12(,13)     RESTORE REGISTER 14                                           
+00211A 980C D014            00014   726          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+00211E 07FE                         727          BR    14             RETURN TO CALLER                                              
+                                    728 *                                                                                           
+                                    729          LTORG                LITERAL ORGANIZATION                                          
+                                    730 *                                                                                           
+002120                              731 CAVGSAVE DS    18F            REGISTER SAVE AREA                                            
+                                    732 *                                                                                           
+                                    733 *        END   CALCAVG        END OF CALCAVG                                                
+                                    734 *                                                                                           
+                                    735          END   PAYROLL3                                                                     
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:   42212 HIGH:    2700 LEAVING:  448656 FREE BYTES. AVERAGE:       61 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.001 SECS,   736000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     1
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+52-345245  JOAN TOWER                   $15.25     80.50           $1,722.75             $236.88            $55.99        $1,429.88
+
+03-456322  WOLFGANG AMADEUS MOZART      $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  RICHARD STRAUSS              $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  AMY BEACH                    $22.00     77.00           $2,579.16             $354.63            $83.82        $2,140.71
+
+76-560023  ETHEL SMYTH                  $23.75     28.25             $710.64              $97.71            $23.10          $589.83
+
+23-870322  PETER ILYICH TCHAIKOVSKY     $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+04-966277  ANTON BRUCKNER               $23.20     78.67           $2,044.58             $281.13            $66.45        $1,697.00
+
+02-345245  FLORENCE PRICE               $15.25     80.50           $1,802.75             $247.88            $58.59        $1,496.28
+
+13-456322  CLAUDE DEBUSSY               $19.00     80.77           $1,546.85             $212.69            $50.27        $1,283.89
+
+34-032233  JUDITH WEIR                  $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  LUDWIG VAN BEETHOVEN         $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+06-560023  JOHANN SEBASTIAN BACH        $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+23-870322  AARON COPLAND                $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+94-966277  CHARLES IVES                 $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-345245  SHULAMIT RAN                 $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  ARTHUR HONEGGER              $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  NADIA BOULANGER              $10.29     80.00           $1,046.97             $143.96            $34.03          $868.98
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     2
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+16-465120  MAX REGER                    $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+76-560023  FRANZ SCHMIDT                $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+03-870322  WILLIAM SCHUMAN              $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+98-996277  FELIX MENDELSSOHN            $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-377245  FRANZ SCHUBERT               $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+03-566322  ROBERT SCHUMANN              $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+04-032233  DMITRI SCHOSTAKOWITSCH      $330.29     80.00          $26,645.97           $3,663.82           $865.99       $22,116.16
+
+15-645120  JOHANNES BRAHMS              $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+76-560023  MODEST MUSSORGSKY            $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+23-320322  JOSEPH HAYDN                 $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+94-966327  ANTON WEBERN                 $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-545245  CLAUDIO MONTEVERDI           $33.33     80.20           $3,148.19             $432.88           $102.32        $2,612.99
+
+03-456322  JEAN SIBELIUS                $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-457233  ARNOLD SCHOENBERG            $10.29     80.00           $1,025.97             $141.07            $33.34          $851.56
+
+16-565120  MICHAEL TIPPETT              $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+70-056523  RICHARD WAGNER               $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+23-878794  FREDERIC CHOPIN              $22.95     79.50           $2,256.28             $310.24            $73.33        $1,872.71
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     3
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+94-966277  MICHAEL HAYDN                $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-345245  BENJAMIN BRITTEN             $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  ANTONIO VIVALDI              $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-324867  JOHANN STRAUSS II           $810.29     80.00          $65,045.97           $8,943.82         $2,113.99       $53,988.16
+
+06-465178  ANTONIN DVORAK               $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+09-978023  ALBAN BERG                   $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+03-870322  FRANZ LISZT                  $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+94-678677  EDWARD ELGAR                 $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-386785  DAVID DIAMOND                $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+14-342322  FANNY MENDELSSOHN            $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+04-037673  GIUSEPPE VERDI               $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  MAX BRUCH                    $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+06-534545  HILDEGARD VON BINGEN        $723.75     28.25          $20,482.64           $2,816.36           $665.69       $17,000.59
+
+23-845342  DIETRICH BUXTEHUDE           $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+34-466277  RALPH VAUGHAN WILLIAMS       $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-347867  FRANZ ABT                    $15.25     77.53           $1,140.45             $156.81            $37.06          $946.58
+
+03-787632  FRANCESCA CACCINI            $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     4
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+34-032233  ENGELBERT HUMPERDINCK        $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  BORIS BLACHER                $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+76-560023  PAUL HINDEMITH               $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+23-870322  BARBARA STROZZI              $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+04-966277  KURT WEILL                   $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-345245  CLARA SCHUMANN               $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  JOHANN ANTON ANDRE           $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  CHRISTOPH WILLIBALD GLUCK    $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  AUGUST BUNGERT               $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+06-560023  REINER BREDEMEYER            $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+03-870322  LOUISE FARENC                $22.95     80.50           $1,893.73             $260.39            $61.55        $1,571.79
+
+04-966277  HANS PFITZNER                $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-345245  GIOVANNI HENRICO ALBINONI    $15.25     80.50           $1,779.05             $244.62            $57.82        $1,476.61
+
+13-967978  MICHAEL VON BIEL             $19.00     80.75           $1,543.15             $212.18            $50.15        $1,280.82
+
+36-765233  JOHANN LUDWIG BACH           $10.29     80.00           $1,445.75             $198.79            $46.99        $1,199.97
+
+15-656760  TERESA CARRENO               $22.00     80.56           $1,916.48             $263.52            $62.29        $1,590.67
+
+76-560023  WOLDEMAR BARGIEL             $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     5
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+23-870322  ANDRZEJ PANUFNIK             $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+94-966277  EDVARD GRIEG                 $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+08-765245  WALTER BRAUNFELS             $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-976322  ISABELLA LEONARDA            $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-035653  CAMILLE SAINT-SAENS          $10.29     80.00           $1,665.97             $229.07            $54.14        $1,382.76
+
+16-487620  GEORGES BIZET                $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+79-679023  HECTOR BERLIOZ               $23.75     28.25           $1,307.34             $179.76            $42.49        $1,085.09
+
+07-860322  GABRIEL FAURE                $22.95     80.50           $2,489.91             $342.36            $80.92        $2,066.63
+
+94-452245  MAURICE RAVEL                $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-345245  CHARLES GOUNOD               $15.25     80.50           $1,701.29             $233.93            $55.29        $1,412.07
+
+03-786322  ROXANNA PANUFNIK             $19.00     80.74           $1,293.00             $177.79            $42.02        $1,073.19
+
+04-032233  GIACOMO MEYERBEER            $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  ERIK SATIE                  $122.00     80.00          $10,645.16           $1,463.71           $345.97        $8,835.48
+
+76-455023  KARLHEINZ STOCKHAUSEN        $23.75     28.25           $1,071.14             $147.28            $34.81          $889.05
+
+03-870345  FRANCIS POULENC             $345.95     78.65          $26,590.92           $3,656.25           $864.20       $22,070.47
+
+94-966277  JEAN-PHILIPPE RAMEAU         $20.20     75.67           $1,737.97             $238.97            $56.48        $1,442.52
+
+52-345245  CECILE CHAMINADE             $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     6
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+13-456322  CESAR FRANCK                 $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  HANS ZIMMER                  $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  PIERRE BOULEZ                $27.52      4.00             $995.24             $136.85            $32.35          $826.04
+
+06-560763  OLIVIER MESSIAEN             $23.02     75.25           $1,768.96             $243.23            $57.49        $1,468.24
+
+23-870322  DARIUS MILHAUD               $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+04-966277  REBECCA CLARKE               $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-324545  PETER CORNELIUS              $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  HANS WERNER HENZE            $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+41-155233  GEORG BOHM                   $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+01-165310  GERMAINE TAILLEFERRE         $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+76-145023  WILHELM FURTWANGLER          $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+23-814122  HANNS EISLER                 $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+04-954534  GEORG FRIEDRICH HANDEL       $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+02-334245  CARL PHILIPP EMANUEL BACH    $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  LILI BOULANGER               $19.00     22.75             $445.69              $61.28            $14.48          $369.93
+
+34-032233  JOHANN PACHELBEL             $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+06-465120  CARL ORFF                    $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     7
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+
+EMPLOYEE   EMPLOYEE                     HOURLY     HOURS            EMPLOYEE    EMPLOYEE FEDERAL    EMPLOYEE STATE          EMPLOYEE
+
+ID         NAME                            PAY    WORKED           GROSS PAY         WITHHOLDING       WITHHOLDING           NET PAY
+---------  -------------------------   -------   -------     ---------------    ----------------    --------------   ---------------
+
+06-560023  FRANZ DANZI                  $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+03-134142  JOCELYN POOK                 $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+04-966277  WILHELM BERGER               $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+01-413245  JACQUES OFFENBACH            $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+13-456322  PHAMIE GOW                   $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  WILHELM FRIEDEMANN BACH      $10.29     80.00           $1,045.97             $143.82            $33.99          $868.16
+
+16-465120  HEINRICH SCHUTZ              $22.00     80.00           $2,645.16             $363.71            $85.97        $2,195.48
+
+06-560023  GEORG PHILIPP TELEMANN       $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+03-870322  HANS-JURGEN VON BOSE         $22.95     80.50           $1,826.23             $251.11            $59.35        $1,515.77
+
+94-966277  ANNE DUDLEY                  $20.20     78.67           $1,798.57             $247.30            $58.45        $1,492.82
+
+52-345245  PAUL DESSAU                  $15.25     80.50           $1,702.75             $234.13            $55.34        $1,413.28
+
+03-456322  FRIEDRICH BAUMFELDER         $19.00     80.75           $1,547.69             $212.81            $50.30        $1,284.58
+
+34-032233  JOHANN CHRISTIAN BACH        $10.29     40.00             $634.37              $87.23            $20.62          $526.52
+
+16-465120  RACHEL PORTMAN               $22.00     52.00           $2,029.16             $279.01            $65.95        $1,684.20
+
+76-560023  DEBBIE WISEMAN               $23.75     28.25             $707.64              $97.30            $23.00          $587.34
+
+                                                  STATE OF ILLINOIS NATIONAL BANK                                        PAGE:     8
+                                                SEMI-MONTHLY EMPLOYEE PAYROLL REPORT                                                
+                                                               TOTALS                                                               
+
+      NUMBER OF EMPLOYEES:             117                                                                                        
+
+          TOTAL GROSS PAY:        $330,791.71                    AVERAGE GROSS PAY:     $2,827.28                                   
+
+TOTAL FEDERAL WITHHOLDING:         $45,483.90          AVERAGE FEDERAL WITHHOLDING:       $388.75                                   
+
+  TOTAL STATE WITHHOLDING:         $10,750.66            AVERAGE STATE WITHHOLDING:        $91.89                                   
+
+            TOTAL NET PAY:        $274,557.15                      AVERAGE NET PAY:     $2,346.64                                   
+
+*** EXECUTION TIME =    0.004 SECS.     10079 INSTRUCTIONS EXECUTED -  2519750 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+
