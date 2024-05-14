@@ -1,0 +1,162 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  8 5 6 1  --  N O D E  S V S C J E S 2        
+
+ 
+21.08.03 JOB01044 ---- FRIDAY,    15 SEP 2023 ----
+21.08.03 JOB01044  IRR010I  USERID KC03C60  IS ASSIGNED TO THIS JOB.
+21.08.03 JOB01044  ICH70001I KC03C60  LAST ACCESS AT 21:02:55 ON FRIDAY, SEPTEMBER 15, 2023
+21.08.03 JOB01044  $HASP373 KC03C60A STARTED - INIT 1    - CLASS A        - SYS 8561
+21.08.04 JOB01044  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+21.08.04 JOB01044  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+21.08.04 JOB01044  -JSTEP01              00     50      2       .00       .00     .0             4  BATCH        0     0     0     0
+21.08.04 JOB01044  -JSTEP02              00     47      2       .00       .00     .0             2  BATCH        0     0     0     0
+21.08.04 JOB01044  -KC03C60A ENDED.  NAME-M. Rasmussen         TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+21.08.04 JOB01044  $HASP395 KC03C60A ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  15 SEP 2023 JOB EXECUTION DATE
+
+
+           62 CARDS READ
+
+
+          141 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           14 SYSOUT SPOOL KBYTES
+
+
+         0.01 MINUTES EXECUTION TIME
+       1 //KC03C60A JOB ,'M. Rasmussen',MSGCLASS=H                               JOB01044
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //*  CSCI 465               ASSIGNMENT 2               fall 2023  *             
+         //*                                                               *             
+         //*  DEVELOPER NAME: Mike Rasmussen                               *             
+         //*        DUE DATE: 9/15/2023                                    *             
+         //*                                                               *             
+         //*  PURPOSE: THE PURPOSE OF THIS ASSIGNMENT IS TO FETCH AND      *             
+         //*  EXECUTE A PROGRAM USING JCL                                  *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+       2 //JSTEP01  EXEC PGM=READRECS                                                    
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //*  JSTEP01: FETCHES AND EXECUTES A PROGRAM                      *             
+         //*                                                               *             
+         //*  STEPLIB: INPUT: THIS IS WHERE THE FILE IS LOCATED            *             
+         //*  RECSIN:  INPUT: READS IN DATA FROM THE PROGRAM               *             
+         //*                                                               *             
+         //*  RECSOUT: OUTPUT: STORES THE DATA INTO A TEMPORAY DATA SET    *             
+         //*                   TO BE USED IN JSTEP02                       *             
+         //*                                                               *             
+         //*  SYSDUMP: OUTPUT: SYSTEM DUMP IF ABEND                        *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+       3 //STEPLIB  DD DSN=KC02322.CSCI465.LOADLIB,DISP=SHR                              
+         //*                                                                             
+       4 //RECSIN   DD DSN=KC02322.CSCI465.DATAFA23(DATA2),DISP=SHR                      
+         //*                                                                             
+       5 //RECSOUT  DD DSN=&&TEMP,SPACE=(TRK,(10,10)),DISP=(MOD,PASS,DELETE)             
+         //*                                                                             
+       6 //SYSUDUMP DD SYSOUT=*                                                          
+         //*                                                                             
+       7 //JSTEP02  EXEC PGM=WRTERECS,COND=(0,LT)                                        
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //*  JSTEP02: FETCHES AND EXECUTES A PROGRAM USING DATA FROM      *             
+         //*           JSETEP01                                            *             
+         //*                                                               *             
+         //*  STEPLIB: INPUT: THIS IS WHERE THE FILE IS LOCATED            *             
+         //*  RECSIN:  INPUT: READS IN THE DATA FROM THE TEMP DATA SET     *             
+         //*                                                               *             
+         //*  RECSOUT: OUTPUT: OUTPUTS THE RESULT OF THE PROGRAM           *             
+         //*                                                               *             
+         //*  SYSDUMP: OUTPUT: SYSTEM DUMP IF ABEND                        *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+       8 //STEPLIB  DD DSN=KC02322.CSCI465.LOADLIB,DISP=SHR                              
+         //*                                                                             
+       9 //RECSIN   DD DSN=&&TEMP,DISP=(OLD,PASS,KEEP)                                   
+         //*                                                                             
+      10 //RECSOUT  DD SYSOUT=*                                                          
+         //*                                                                             
+      11 //SYSUDUMP DD SYSOUT=*                                                          
+      12 //                                                                              
+ICH70001I KC03C60  LAST ACCESS AT 21:02:55 ON FRIDAY, SEPTEMBER 15, 2023
+IEFA111I KC03C60A IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03C60A JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IGD103I SMS ALLOCATED TO DDNAME RECSIN
+IGD101I SMS ALLOCATED TO DDNAME (RECSOUT )
+        DSN (SYS23258.T210803.RA000.KC03C60A.TEMP.H01    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IEF237I JES2 ALLOCATED TO SYSUDUMP
+IEF142I KC03C60A JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC02322.CSCI465.LOADLIB                      RETAINED,  DDNAME=STEPLIB 
+IGD104I KC02322.CSCI465.DATAFA23                     RETAINED,  DDNAME=RECSIN  
+IGD106I SYS23258.T210803.RA000.KC03C60A.TEMP.H01     PASSED,    DDNAME=RECSOUT 
+IEF285I   KC03C60.KC03C60A.JOB01044.D0000101.?         SYSOUT        
+IEF373I STEP/JSTEP01 /START 2023258.2108
+IEF032I STEP/JSTEP01 /STOP  2023258.2108 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:    88K  SYS:   264K  EXT:     3160K  SYS:    11232K
+        ATB- REAL:                  1256K  SLOTS:                     0K
+             VIRT- ALLOC:      14M SHRD:       0M
+IEF236I ALLOC. FOR KC03C60A JSTEP02
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IGD103I SMS ALLOCATED TO DDNAME RECSIN
+IEF237I JES2 ALLOCATED TO RECSOUT
+IEF237I JES2 ALLOCATED TO SYSUDUMP
+IEF142I KC03C60A JSTEP02 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC02322.CSCI465.LOADLIB                      RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03C60.KC03C60A.JOB01044.D0000102.?         SYSOUT        
+IEF285I   KC03C60.KC03C60A.JOB01044.D0000103.?         SYSOUT        
+IEF373I STEP/JSTEP02 /START 2023258.2108
+IEF032I STEP/JSTEP02 /STOP  2023258.2108 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:    92K  SYS:   264K  EXT:     3160K  SYS:    11236K
+        ATB- REAL:                  1256K  SLOTS:                     0K
+             VIRT- ALLOC:      14M SHRD:       0M
+IGD103I SMS ALLOCATED TO DDNAME SYS00001
+IGD104I SYS23258.T210804.RA000.KC03C60A.R0109237     RETAINED,  DDNAME=SYS00001
+IGD105I SYS23258.T210803.RA000.KC03C60A.TEMP.H01     DELETED,   DDNAME=RECSIN  
+IEF375I  JOB/KC03C60A/START 2023258.2108
+IEF033I  JOB/KC03C60A/STOP  2023258.2108 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+
+QUOTATIONS FROM TWO IMPORTANT AMERICAN HISTORICAL DOCUMENTS                                                                         
+
+"We hold these truths to be self-evident, that all men are created                                                                  
+
+equal, that they are endowed by their Creator with certain unalienable                                                              
+
+Rights, that among these are Life, Liberty and the pursuit of                                                                       
+
+Happiness." -- Declaration of Independence, 1776                                                                                    
+
+"We the People of the United States, in Order to form a more perfect                                                                
+
+Union, establish Justice, insure domestic Tranquility, provide for the                                                              
+
+common defence, promote the general Welfare, and secure the Blessings                                                               
+
+of Liberty to ourselves and our Posterity, do ordain and establish this                                                             
+
+Constitution of the United States of America." -- Preamble to the U.S.                                                              
+
+Constitution, 1789                                                                                                                  
+
