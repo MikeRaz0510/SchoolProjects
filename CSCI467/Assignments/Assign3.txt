@@ -1,0 +1,35 @@
+Assignment 3 
+Due 10/9/2023 by 11:59 pm 
+100 Points 
+
+Your name: Mike Rasmussen
+Answer all questions properly. All the answers can be found in the textbook. The answer should at least be what you find in the text. Please do not write a single sentence or two. These are 10 point questions. So please elaborate. Your understanding is required for the successful completion of the project in the later weeks.
+    1. What are the shared characteristics of different agile methods of software development?
+Program specification, design and implementation are all done together. This means there is no set order that they must be completed in. The system is developed in versions or increments that the customer can evaluate and update specifications. Deliveries of new versions are made frequently for evaluation. There should be many support tools to support development. The last characteristic is Minimal documentation. Allowing more time to focus on working on the code.
+    2. For what types of system are agile approaches to development particularly likely to be successful?
+Agile method approach is best used when developing a small or medium sized product for scale. Another type of system where an agile approach is best is a custom system developed within an organization where there is commitment from the customer to be involved in the development process.
+    3. List the 5 principles of agile methods.
+1. Customer Involvement. The customers should be involved in the development process, their role is to evaluate and provide feedback on iterations of the system
+2. Incremental delivery. The software should be delivered in increments to the customer.
+3. People not process. The development team should have their individual strengths utilized and not be held back by an arbitrary process to follow.
+4. Embrace change. Expect changes to the requirements with each iteration that is delivered to the customer.
+5. Maintain simplicity. Focus on simplicity in the software development process and with the development of the actual software. Work to eliminate complexity.
+    4. List 4 questions that should be asked when deciding whether or not to adopt an agile method of software development.
+1. How large is the system being developed?
+2. What is the expected system lifetime?
+3. How good are the designers and programmers in the development team?
+4. Will customer representatives be available to provide feedback of system increments?
+    5. Name three important agile techniques that were introduced in extreme programming?
+    1. Small releases: The most important functionalities are developed first and system releases are frequent and incrementally add functionality to the first release.
+    2. Test-first development: An automated unit test framework is used to write tests for a new piece of functionality before the functionality is implemented.
+    3. Refactoring: All developers are expected to refactor their code as soon as optimizations are found.
+    6. What is test-first development?
+An automated unit test framework is used to write tests for a new piece of functionality before the functionality is implemented. All previous and new tests are run automatically when new functionality is added. This ensures that the new functionality has not introduced any errors.
+    7. What are the possible problems of test-first development?
+Programmers prefer programming to testing and will often take shortcuts when writing tests leading to inaccurate tests being conducted. Another problem is that it may be very difficult to write tests incrementally. A final problem is that it may be difficult to judge the completeness of a set of tests.  
+    8. Why has the Scrum agile method been widely adopted in preference to methods such as XP.
+The product is broken down into a set of manageable and understandable chunks. Requirements that are unstable do not hinder progress. THe whole team will have visibility on everything and that will improve communication. Customers see on time delivery of increments and gain feedback on how the product works. Trust between customers and developers is established and a positive culture is created where everyone expects the project to succeed. 
+    9. What is a Scrum sprint?
+A scrum sprint is a single development iteration. These typically range from 2 weeks to a month in length.
+    10. What are the barriers to introducing agile methods into large companies?
+Large systems are usually collections of smaller systems which can frequently be located in different time zones making effective communication difficult. Large systems and their development processes are usually limited by external rules and regulations which can limit the way they can be developed. Large systems take a long time to develop, it is difficult to maintain a coherent team who know about the system over that long of a period of time. Large projects can have diverse sets of stakeholders and it is impossible to involve all stakeholders in the development process. 
