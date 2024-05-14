@@ -1,0 +1,40 @@
+Assignment 2 
+Due 9/25/2023 by 11:59 pm 
+100 Points 
+Your name: Mike Rasmussen
+ Answer all questions properly. All the answers can be found in the textbook. The answer should at least be what you find in the text. Please do not write a single sentence or two. These are 10 point questions. So please elaborate. Your understanding is required for the successful completion of the project in the later weeks.
+
+    1. What are the fundamental activities that are common to all software processes?
+    2. Specification, which is when you define what the system should do. Design and implementation, which is when you define the organization of the system and then implement it. Validation, which means checking that the system does what the customer wants. Evolution, which is when you make changes to the system in response to changing customer needs.
+    2. List 3 generic process models that are used in software engineering?
+    3. 1. The waterfall model. A plan driven model with separate and distinct phases of specification and development
+    4. 2. Incremental development. In this model, specification, development, and validation are interleaved.
+    5. 3. Integration and Configuration. This model A system is assembled from existing configurable components.
+    3. Why are iterations usually limited when the waterfall model is used?
+    4. Because each step of the waterfall model takes place after another step, it is very difficult to make changes while a project is in progress. A step must be completed before moving onto the next step making accommodation a customer change difficult.
+    4. What are the three benefits of incremental development, compared to the waterfall model?
+    5. 1. It is much easier to accommodate changing customer requirements. The team will have much less analysis and documentation to redo when compared to the waterfall model.
+    6. 2. It is easier to get customer feedback on the development already completed. Since changes are being rolled out incrementally, the customer can give feedback on every increment of development.
+    7. 3. It is possible to more rapidly deliver and deploy useful software to the customer. This means the customer can gain value from the software much earlier than during a waterfall development.  
+    5. What are the development stages in integration and configuration?
+    6. 1. Requirement specification. Getting the specifications from the customer
+    7. 2. Software discovery and evaluation. Already existing software is found and evaluated for the possibility of reuse.
+    8. 3. Requirements refinement. After a pre existing software is found, the requirements and specifications are adjusted to more closely align to the software that is going to be reused. This gives you a better understanding of how you will need to modify the preexisting software for this project.
+    9. 4. Application system configuration. The preexisting software is configured to fit the refined requirements
+    10. 5. Component adaptation and integration. The preexisting software is broken down into components and integrated into the project for reuse.
+    6. What are the principal requirements engineering activities?
+    7. Requirement elicitation and analysis. What does the customer expect or require from the system. Requirement specification, the requirements are defined in detail. Requirements validation, the validity of all the requirements are checked.
+    7. Why is it increasingly irrelevant to distinguish between software development and evolution?
+    8. Fewer and fewer systems are completely new, meaning that most of the time software is being developed from preexisting software. Modifying already made software is software evolution and so development and evolution are becoming the same thing.
+    8. What are the advantages of using incremental development and delivery?
+    9. The cost of accommodating changing customer requirements is lower. It is easier to adapt to changes because feedback can be given at each step in development.  More rapid delivery and deployment of useful software to the customer is possible. The customer can gain value from the software every time an iteration is developed.  
+    9. What are the two different approaches to process improvement and change that have been proposed?
+    10. The process maturity approach focuses on improving the process and project management and introducing good software engineering practice. The level of process maturity reflects how good technical and management practice has been adopted in the software development process.
+    11. The agile approach focuses on iterative development and reduces the overhead of the software process. The agile approach is primarily characterized by rapid delivery of functionality and responsiveness to changing customer requirements.
+    10. What are the identified levels in the SEI’s Capability Maturity Model
+    11. Level 1. Initial. Uncontrolled
+    12. Level 2. Repeatable. Product management procedures are defined and used
+    13. Level 3. Defined. Process management procedure and strategies are defined and used
+    14. Level 4. Managed. Quality management strategies are defined and used
+    15. Level 5. Optimizing. Process improvement strategies are defined and used.
+    16. 
