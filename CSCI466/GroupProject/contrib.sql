@@ -1,0 +1,27 @@
+
+INSERT INTO CONTRIBUTORS VALUES ('22', 'Taylor Swift', '12/13/1989', 'USA'); --lavander haze
+INSERT INTO CONTRIBUTORS VALUES ('23', 'Jack Antonoff', '03/31/1984', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('24', 'Zoe Kravitz', '12/01/1988', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('1', 'Morgan Wallen', '05/13/1993', 'USA'); -- you proof
+INSERT INTO CONTRIBUTORS VALUES ('25', 'Charlie Handsome', 'NULL', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('26', 'Joey Moi', 'NULL', 'Canada');
+INSERT INTO CONTRIBUTORS VALUES ('27', 'Harry Styles', '02/01/1994', 'UK'); -- as it was
+INSERT INTO CONTRIBUTORS VALUES ('28', 'Kid Harpoon', '04/20/1982', 'UK');
+INSERT INTO CONTRIBUTORS VALUES ('29', 'Tyler Johnson', 'NULL', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('30', 'Toosii', '01/09/2000', 'USA'); -- favorite song
+INSERT INTO CONTRIBUTORS VALUES ('31', 'Adelso', 'NULL', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('32', 'Tatiana Manaois', '1996', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('33', 'Miguel', '10/23/1985', 'USA'); -- sure thing
+INSERT INTO CONTRIBUTORS VALUES ('34', 'Happy Perez', 'NULL', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('35', 'Rod Wave', '08/27/1999', 'USA'); -- fight the feeling
+INSERT INTO CONTRIBUTORS VALUES ('36', 'Eslabon Armado', 'NULL', 'USA'); -- ella balia sola
+INSERT INTO CONTRIBUTORS VALUES ('37', 'Pedro Julian Tovar', '07/22/2002', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('38', 'David Guetta', '11/07/1967', 'France'); -- Im good (Blue)
+INSERT INTO CONTRIBUTORS VALUES ('39', 'Bebe Rexha', '08/30/1989', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('40', 'Kamille', 'NULL', 'UK');
+INSERT INTO CONTRIBUTORS VALUES ('41', 'Chris Brown', '05/05/1989', 'USA'); -- under the infulence
+INSERT INTO CONTRIBUTORS VALUES ('42', 'Davido', '11/21/1992', 'Nigeria');
+INSERT INTO CONTRIBUTORS VALUES ('43', 'Kiddominant', '07/13/1992', 'Nigeria');
+INSERT INTO CONTRIBUTORS VALUES ('1', 'Morgan Wallen', '05/13/1993', 'USA'); -- thought you should know
+INSERT INTO CONTRIBUTORS VALUES ('44', 'Miranda Lambert', '11/10/1983', 'USA');
+INSERT INTO CONTRIBUTORS VALUES ('26', 'Joey Moi', 'NULL', 'Canada');
