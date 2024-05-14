@@ -1,0 +1,946 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  8 5 6 1  --  N O D E  S V S C J E S 2        
+
+ 
+22.25.06 JOB01959 ---- WEDNESDAY, 11 OCT 2023 ----
+22.25.06 JOB01959  IRR010I  USERID KC03C60  IS ASSIGNED TO THIS JOB.
+22.25.08 JOB01959  ICH70001I KC03C60  LAST ACCESS AT 21:48:04 ON WEDNESDAY, OCTOBER 11, 2023
+22.25.08 JOB01959  $HASP373 KC03C60A STARTED - INIT 1    - CLASS A        - SYS 8561
+22.25.12 JOB01959  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+22.25.12 JOB01959  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+22.25.12 JOB01959  -JSTEP01              00  14497    179       .00       .00     .0            67  BATCH        0     0     0     0
+22.25.12 JOB01959  -JSTEP02              00    229     24       .00       .00     .0            47  BATCH        0     0     0     0
+22.25.12 JOB01959  -JSTEP03              00    253     22       .00       .00     .0            37  BATCH        0     0     0     0
+22.25.12 JOB01959  -KC03C60A ENDED.  NAME-M.Rasmussen          TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+22.25.12 JOB01959  $HASP395 KC03C60A ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  11 OCT 2023 JOB EXECUTION DATE
+
+
+          262 CARDS READ
+
+
+          807 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           51 SYSOUT SPOOL KBYTES
+
+
+         0.10 MINUTES EXECUTION TIME
+       1 //KC03C60A JOB ,'M.Rasmussen',MSGCLASS=H                                JOB01959
+         //*                                                                             
+         //*****************************************************************             
+         //*  CSCI 465               ASSIGNMENT 4                Fall 2023 *             
+         //*                                                               *             
+         //*  DEVELOPER NAME: MIKE RASMUSSEN                               *             
+         //*        DUE DATE: 10/11/23                                     *             
+         //*                                                               *             
+         //*  PURPOSE: THIS PROGRAM WILL READ IN DATA FROM A RECORD AND    *             
+         //*  FORMAT THE DATA INTO A DETAIL LINE AND OUTPUT IT. IT USES    *             
+         //*  THE SAME CODE FROM THE PREVIOUS ASSIGNMENT TO COMPILE, BIND  *             
+         //*  AND FETCH THE COBOL PROGRAM.                                               
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+       2 //JSTEP01  EXEC PGM=IGYCRCTL,REGION=0M                                          
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //* JSTEP01 COMPILES THE COBOL PROGRAM USING THE COBOL COMPILER   *             
+         //*                                                               *             
+         //* DDNAME    IN/OUT FILE DESCRIPTION                             *             
+         //*                                                               *             
+         //* STEPLIB   INPUT  INDICATES WHERE THE COBOL COMPILER IS STORED *             
+         //* SYSIN     INPUT  COBOL PROGRAM TO BE COMPILED                 *             
+         //*                                                               *             
+         //* SYSLIN    OUTPUT INDICATES WHERE THE TEMP OBJECT MODULE IS    *             
+         //*                  STORED                                       *             
+         //* SYSUT1-15 OUTPUT TEMPORARY WORK DATA SETS USED DURING         *             
+         //*                  COMPILATION                                  *             
+         //* SYSPRINT  OUTPUT INDICATES THE DATA SET WHERE THE SOURCE      *             
+         //*                  LISTING AND MESSAGES ARE TO BE WRITTEN       *             
+         //* SYSMDECK  OUTPUT INDICATES A DATA SET THAT WILL CONTAIN A     *             
+         //*                  COPY OF THE UPDATED INPUT AFTER PROCESSING   *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+       3 //STEPLIB  DD   DSN=IGY630.SIGYCOMP,DISP=SHR                                    
+       4 //         DD   DSN=CEE.SCEERUN,DISP=SHR                                        
+       5 //         DD   DSN=CEE.SCEERUN2,DISP=SHR                                       
+         //*                                                                             
+       6 //SYSIN    DD *                                                                 
+         //*                                                                             
+       7 //SYSLIN   DD DSN=&&OBJMOD,SPACE=(CYL,(1,1)),DISP=(MOD,PASS)                    
+         //*                                                                             
+       8 //SYSUT1   DD SPACE=(CYL,(1,1))                                                 
+       9 //SYSUT2   DD SPACE=(CYL,(1,1))                                                 
+      10 //SYSUT3   DD SPACE=(CYL,(1,1))                                                 
+      11 //SYSUT4   DD SPACE=(CYL,(1,1))                                                 
+      12 //SYSUT5   DD SPACE=(CYL,(1,1))                                                 
+      13 //SYSUT6   DD SPACE=(CYL,(1,1))                                                 
+      14 //SYSUT7   DD SPACE=(CYL,(1,1))                                                 
+      15 //SYSUT8   DD SPACE=(CYL,(1,1))                                                 
+      16 //SYSUT9   DD SPACE=(CYL,(1,1))                                                 
+      17 //SYSUT10  DD SPACE=(CYL,(1,1))                                                 
+      18 //SYSUT11  DD SPACE=(CYL,(1,1))                                                 
+      19 //SYSUT12  DD SPACE=(CYL,(1,1))                                                 
+      20 //SYSUT13  DD SPACE=(CYL,(1,1))                                                 
+      21 //SYSUT14  DD SPACE=(CYL,(1,1))                                                 
+      22 //SYSUT15  DD SPACE=(CYL,(1,1))                                                 
+         //*                                                                             
+      23 //SYSPRINT DD SYSOUT=*                                                          
+         //*                                                                             
+      24 //SYSMDECK DD SPACE=(CYL,(1,1))                                                 
+         //*                                                                             
+      25 //JSTEP02  EXEC PGM=IEWBLINK,COND=(0,LT)                                        
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //* JSTEP02 BINDS THE PROGRAM                                     *             
+         //*                                                               *             
+         //* DDNAME    IN/OUT FILE DESCRIPTION                             *             
+         //*                                                               *             
+         //* SYSLIB    INPUT  INDICATES WHERE THE BINDER IS STORED         *             
+         //* SYSIN     INPUT  THE OBJECT MODULE TO BE BINDED               *             
+         //*                                                               *             
+         //* SYSLMOD   OUTPUT PROGRAM OBJECT CREATED BY THE BINDER         *             
+         //* SYSPRINT  OUTPUT MESSAGES FROM THE BINDER                     *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+      26 //SYSLIB   DD DSN=CEE.SCEELKED,DISP=SHR                                         
+         //*                                                                             
+      27 //SYSLIN   DD DSN=&&OBJMOD,DISP=(OLD,DELETE)                                    
+         //*                                                                             
+      28 //SYSLMOD  DD DSN=KC03C60.CSCI465.LOADLIB(SALESRPT),                            
+         //            SPACE=(1024,(50,20,1)),DSNTYPE=LIBRARY,                           
+         //            DISP=(MOD,KEEP,KEEP)                                              
+         //*                                                                             
+      29 //SYSPRINT DD SYSOUT=*                                                          
+         //*                                                                             
+      30 //JSTEP03  EXEC PGM=SALESRPT,COND=(0,LT)                                        
+         //*                                                                             
+         //*****************************************************************             
+         //*                                                               *             
+         //* JSTEP03 BINDS THE PROGRAM                                     *             
+         //*                                                               *             
+         //* DDNAME    IN/OUT FILE DESCRIPTION                             *             
+         //*                                                               *             
+         //* SYSLIB    INPUT  INDICATES WHERE THE PROGRAM OBJ IS STORED    *             
+         //* SALESFLE  INPUT  THE PROGRAM OBJ THAT WILL BE EXECUTED        *             
+         //*                                                               *             
+         //* RPTFLE    OUTPUT STANDARD OUTPUT                              *             
+         //* SYSUDUMP  OUTPUT SYSTEM DUMP IF ABEND                         *             
+         //*                                                               *             
+         //*****************************************************************             
+         //*                                                                             
+      31 //STEPLIB  DD DSN=KC03C60.CSCI465.LOADLIB,DISP=SHR                              
+         //*                                                                             
+      32 //SALESFLE DD DSN=KC02322.CSCI465.DATAFA23(DATA4),DISP=SHR                      
+         //*                                                                             
+      33 //RPTFLE   DD SYSOUT=*                                                          
+         //*                                                                             
+      34 //SYSUDUMP DD SYSOUT=*                                                          
+ICH70001I KC03C60  LAST ACCESS AT 21:48:04 ON WEDNESDAY, OCTOBER 11, 2023
+IEFA111I KC03C60A IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03C60A JSTEP01
+IEF237I 1A76 ALLOCATED TO STEPLIB
+IEF237I 1001 ALLOCATED TO 
+IEF237I 1001 ALLOCATED TO 
+IEF237I JES2 ALLOCATED TO SYSIN
+IGD101I SMS ALLOCATED TO DDNAME (SYSLIN  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.OBJMOD.H01  )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT1  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110527    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT2  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110528    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT3  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110529    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT4  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110530    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT5  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110531    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT6  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110532    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT7  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110533    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT8  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110534    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT9  )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110535    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT10 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110536    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT11 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110537    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT12 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110538    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT13 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110539    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT14 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110540    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IGD101I SMS ALLOCATED TO DDNAME (SYSUT15 )
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110541    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IGD101I SMS ALLOCATED TO DDNAME (SYSMDECK)
+        DSN (SYS23284.T222506.RA000.KC03C60A.R0110542    )
+        STORCLAS (TEMPSC) MGMTCLAS (        ) DATACLAS (        )
+        VOL SER NOS= KCTR01                                                                
+IEF142I KC03C60A JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IEF285I   IGY630.SIGYCOMP                              KEPT          
+IEF285I   VOL SER NOS= VTIGYL.                            
+IEF285I   CEE.SCEERUN                                  KEPT          
+IEF285I   VOL SER NOS= VTMVSC.                            
+IEF285I   CEE.SCEERUN2                                 KEPT          
+IEF285I   VOL SER NOS= VTMVSC.                            
+IEF285I   KC03C60.KC03C60A.JOB01959.D0000101.?         SYSIN         
+IGD106I SYS23284.T222506.RA000.KC03C60A.OBJMOD.H01   PASSED,    DDNAME=SYSLIN  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110527     DELETED,   DDNAME=SYSUT1  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110528     DELETED,   DDNAME=SYSUT2  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110529     DELETED,   DDNAME=SYSUT3  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110530     DELETED,   DDNAME=SYSUT4  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110531     DELETED,   DDNAME=SYSUT5  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110532     DELETED,   DDNAME=SYSUT6  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110533     DELETED,   DDNAME=SYSUT7  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110534     DELETED,   DDNAME=SYSUT8  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110535     DELETED,   DDNAME=SYSUT9  
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110536     DELETED,   DDNAME=SYSUT10 
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110537     DELETED,   DDNAME=SYSUT11 
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110538     DELETED,   DDNAME=SYSUT12 
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110539     DELETED,   DDNAME=SYSUT13 
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110540     DELETED,   DDNAME=SYSUT14 
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110541     DELETED,   DDNAME=SYSUT15 
+IEF285I   KC03C60.KC03C60A.JOB01959.D0000102.?         SYSOUT        
+IGD105I SYS23284.T222506.RA000.KC03C60A.R0110542     DELETED,   DDNAME=SYSMDECK
+IEF373I STEP/JSTEP01 /START 2023284.2225
+IEF032I STEP/JSTEP01 /STOP  2023284.2225 
+        CPU:     0 HR  00 MIN  00.03 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   540K  SYS:   576K  EXT:   138520K  SYS:    14716K
+        ATB- REAL:                  6556K  SLOTS:                     0K
+             VIRT- ALLOC:     536M SHRD:       0M
+IEF236I ALLOC. FOR KC03C60A JSTEP02
+IEF237I 1001 ALLOCATED TO SYSLIB
+IGD103I SMS ALLOCATED TO DDNAME SYSLIN
+IGD103I SMS ALLOCATED TO DDNAME SYSLMOD
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF142I KC03C60A JSTEP02 - STEP WAS EXECUTED - COND CODE 0000
+IEF285I   CEE.SCEELKED                                 KEPT          
+IEF285I   VOL SER NOS= VTMVSC.                            
+IGD105I SYS23284.T222506.RA000.KC03C60A.OBJMOD.H01   DELETED,   DDNAME=SYSLIN  
+IGD104I KC03C60.CSCI465.LOADLIB                      RETAINED,  DDNAME=SYSLMOD 
+IEF285I   KC03C60.KC03C60A.JOB01959.D0000103.?         SYSOUT        
+IEF373I STEP/JSTEP02 /START 2023284.2225
+IEF032I STEP/JSTEP02 /STOP  2023284.2225 
+        CPU:     0 HR  00 MIN  00.01 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:    88K  SYS:   308K  EXT:     1768K  SYS:    11728K
+        ATB- REAL:                  1292K  SLOTS:                     0K
+             VIRT- ALLOC:      20M SHRD:       0M
+IEF236I ALLOC. FOR KC03C60A JSTEP03
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IGD103I SMS ALLOCATED TO DDNAME SALESFLE
+IEF237I JES2 ALLOCATED TO RPTFLE
+IEF237I JES2 ALLOCATED TO SYSUDUMP
+IEF142I KC03C60A JSTEP03 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC03C60.CSCI465.LOADLIB                      RETAINED,  DDNAME=STEPLIB 
+IGD104I KC02322.CSCI465.DATAFA23                     RETAINED,  DDNAME=SALESFLE
+IEF285I   KC03C60.KC03C60A.JOB01959.D0000104.?         SYSOUT        
+IEF285I   KC03C60.KC03C60A.JOB01959.D0000105.?         SYSOUT        
+IEF373I STEP/JSTEP03 /START 2023284.2225
+IEF032I STEP/JSTEP03 /STOP  2023284.2225 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:    92K  SYS:   304K  EXT:     3160K  SYS:    11712K
+        ATB- REAL:                  1292K  SLOTS:                     0K
+             VIRT- ALLOC:      20M SHRD:       0M
+IEF375I  JOB/KC03C60A/START 2023284.2225
+IEF033I  JOB/KC03C60A/STOP  2023284.2225 
+        CPU:     0 HR  00 MIN  00.04 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302                 Date 10/11/2023  Time 22:25:09   Page     1                
+
+Options in effect:                                                                                                                  
+ NOADATA                                                                                                                            
+   ADV                                                                                                                              
+   AFP(NOVOLATILE)                                                                                                                  
+   QUOTE                                                                                                                            
+   ARCH(8)                                                                                                                          
+   ARITH(COMPAT)                                                                                                                    
+ NOAWO                                                                                                                              
+ NOBLOCK0                                                                                                                           
+   BUFSIZE(4096)                                                                                                                    
+ NOCICS                                                                                                                             
+   CODEPAGE(1140)                                                                                                                   
+ NOCOMPILE(S)                                                                                                                       
+   CONDCOMP(NOSKIPSRC)                                                                                                              
+ NOCOPYLOC                                                                                                                          
+ NOCOPYRIGHT                                                                                                                        
+ NOCURRENCY                                                                                                                         
+   DATA(31)                                                                                                                         
+   DBCS                                                                                                                             
+ NODECK                                                                                                                             
+ NODEFINE                                                                                                                           
+ NODIAGTRUNC                                                                                                                        
+   DISPSIGN(COMPAT)                                                                                                                 
+ NODLL                                                                                                                              
+ NODUMP                                                                                                                             
+ NODYNAM                                                                                                                            
+ NOEXIT                                                                                                                             
+ NOEXPORTALL                                                                                                                        
+ NOFASTSRT                                                                                                                          
+   FLAG(I,I)                                                                                                                        
+ NOFLAGSTD                                                                                                                          
+   HGPR(PRESERVE)                                                                                                                   
+ NOINITCHECK                                                                                                                        
+ NOINITIAL                                                                                                                          
+   INLINE                                                                                                                           
+   INTDATE(ANSI)                                                                                                                    
+ NOINVDATA                                                                                                                          
+   LANGUAGE(EN)                                                                                                                     
+   LINECOUNT(60)                                                                                                                    
+ NOLIST                                                                                                                             
+   LP(32)                                                                                                                           
+ NOMAP                                                                                                                              
+   MAXPCF(100000)                                                                                                                   
+ NOMDECK                                                                                                                            
+ NONAME                                                                                                                             
+   NSYMBOL(NATIONAL)                                                                                                                
+ NONUMBER                                                                                                                           
+ NONUMCHECK                                                                                                                         
+   NUMPROC(NOPFD)                                                                                                                   
+   OBJECT                                                                                                                           
+ NOOFFSET                                                                                                                           
+   OPTIMIZE(0)                                                                                                                      
+   OUTDD(SYSOUT)                                                                                                                    
+ NOPARMCHECK                                                                                                                        
+   PGMNAME(COMPAT)                                                                                                                  
+   QUALIFY(COMPAT)                                                                                                                  
+   RENT                                                                                                                             
+   RMODE(AUTO)                                                                                                                      
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302                 Date 10/11/2023  Time 22:25:09   Page     2                
+
+ NORULES                                                                                                                            
+ NOSERVICE                                                                                                                          
+   SEQUENCE                                                                                                                         
+   SOURCE(DEC)                                                                                                                      
+   SPACE(1)                                                                                                                         
+ NOSQL                                                                                                                              
+   SQLCCSID                                                                                                                         
+ NOSQLIMS                                                                                                                           
+ NOSSRANGE                                                                                                                          
+ NOSTGOPT                                                                                                                           
+   SUPPRESS                                                                                                                         
+ NOTERM                                                                                                                             
+ NOTEST(NODWARF,NOSOURCE,NOSEPARATE)                                                                                                
+ NOTHREAD                                                                                                                           
+   TRUNC(STD)                                                                                                                       
+   TUNE(8)                                                                                                                          
+ NOVBREF                                                                                                                            
+   VLR(STANDARD)                                                                                                                    
+   VSAMOPENFS(COMPAT)                                                                                                               
+ NOWORD                                                                                                                             
+   XMLPARSE(XMLSS)                                                                                                                  
+   XREF(FULL)                                                                                                                       
+   ZWB                                                                                                                              
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     3                
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+
+  000001               ********************************************************                                                     
+  000002               *                                                      *                                                     
+  000003               * PROGRAM NAME: SALESRPT  	                            *                                                     
+  000004               * PROGRAMMER:   MIKE RASMUSSEN                         *                                                     
+  000005               * DUE DATE:     10/11/2023                             *                                                     
+  000006               *                                                      *                                                     
+  000007               * FUNCTION: THIS PROGRAM READS INPUT DATA RECORDS      *                                                     
+  000008               *           AND THEN WRITES THEM TO STANDARD OUTPUT.   *                                                     
+  000009               *                                                      *                                                     
+  000010               * INPUT: SALESFLE - THE INPUT DATA RECORDS READ IN     *                                                     
+  000011               *        EACH RECORD CONTAINS A BRANCH NAME, A BROKER  *                                                     
+  000012               *        NAME, AND A DEPOSIT AMOUNT                    *                                                     
+  000013               *                                                      *                                                     
+  000014               * OUTPUT: RPTFLE - THE INPUT DATA RECORDS WRITTEN      *                                                     
+  000015               *         OUT WITH A DETAIL LINE, FORMATTING THE       *                                                     
+  000016               *         BRANCH NAME, BROKER NAME, AND DEPOSIT AMOUNT *                                                     
+  000017               *                                                      *                                                     
+  000018               * NOTES: NONE                                          *                                                     
+  000019               *                                                      *                                                     
+  000020               ********************************************************                                                     
+  000021                                                                                                                            
+  000022                IDENTIFICATION DIVISION.                                                                                    
+  000023                                                                                                                            
+  000024                PROGRAM-ID.    SALESRPT.                                                                                    
+  000025                AUTHOR.        MIKE RASMUSSEN.                                                                              
+  000026                DATE-WRITTEN.  10/11/2023.                                                                                  
+  000027                DATE-COMPILED. 10/11/23.                                                                                    
+  000028                                                                                                                            
+  000029                ENVIRONMENT DIVISION.                                                                                       
+  000030                                                                                                                            
+  000031                INPUT-OUTPUT SECTION.                                                                                       
+  000032                                                                                                                            
+  000033                FILE-CONTROL.                                                                                               
+  000034                                                                                                                            
+  000035                    SELECT SALES-FILE ASSIGN TO SALESFLE.                                 50                                
+  000036                    SELECT REPORT-FILE ASSIGN TO RPTFLE.                                  67                                
+  000037                                                                                                                            
+  000038                DATA DIVISION.                                                                                              
+  000039                                                                                                                            
+  000040                FILE SECTION.                                                                                               
+  000041                                                                                                                            
+  000042               ********************************************************                                                     
+  000043               *                                                      *                                                     
+  000044               * SALES-FILE IS A DISK FILE USED AS INPUT. IT CONTAINS *                                                     
+  000045               * AN UNKNOWN NUMBER OF RECORDS. EACH RECORD CONTAINS A *                                                     
+  000046               * A BRANCH NAME, A BROKER  NAME, AND A DEPOSIT AMOUNT  *                                                     
+  000047               *                                                      *                                                     
+  000048               ********************************************************                                                     
+  000049                                                                                                                            
+  000050                FD  SALES-FILE                                                                                              
+  000051                    RECORDING MODE F.                                                                                       
+  000052                                                                                                                            
+  000053                01  SALE-RECORD.                                                                                            
+  000054                    05  IN-BRANCH-NME        PIC X(20).                                                                     
+  000055                    05  IN-BROKER-NME        PIC X(25).                                                                     
+  000056                    05  IN-DEP-AMT           PIC S9(8)V99.                                                                  
+  000057                    05                       PIC X(25).                                                                     
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     4                
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+
+  000058                                                                                                                            
+  000059               ********************************************************                                                     
+  000060               *                                                      *                                                     
+  000061               * REPORT-FILE CONTAINS A GENERIC PRINT LINE. IT IS     *                                                     
+  000062               * USED TO PRINT THE FORMATTED DETAIL LINE WITH THE     *                                                     
+  000063               * DATA FROM THE RECORD.                                *                                                     
+  000064               *                                                      *                                                     
+  000065               ********************************************************                                                     
+  000066                                                                                                                            
+  000067                FD  REPORT-FILE                                                                                             
+  000068                    RECORDING MODE F                                                                                        
+  000069                    BLOCK CONTAINS 20 RECORDS.                                                                              
+  000070                                                                                                                            
+  000071                01  REPORT-RECORD            PIC X(132).                                                                    
+  000072                                                                                                                            
+  000073                WORKING-STORAGE SECTION.                                                                                    
+  000074                                                                                                                            
+  000075               ********************************************************                                                     
+  000076               *                                                      *                                                     
+  000077               * VARIABLES:                                           *                                                     
+  000078               *                                                      *                                                     
+  000079               * EOF-FLAG     CAHNGES TO 'Y' WHEN END OF FILE OCCURS  *                                                     
+  000080               *                                                      *                                                     
+  000081               * DETAIL-LINE  OUTPUT LINE THAT FORMATS THE DATA FOR   *                                                     
+  000082               *              OUTPUT                                  *                                                     
+  000083               *                                                      *                                                     
+  000084               ********************************************************                                                     
+  000085                                                                                                                            
+  000086                01  EOF-FLAG                 PIC X     VALUE 'N'.                                                           
+  000087                                                                                                                            
+  000088                01  DETAIL-LINE.                                                                                            
+  000089                    05  OUT-BRANCH-NME       PIC X(25).                                                                     
+  000090                    05                       PIC X(10)  VALUE SPACES.                     IMP                               
+  000091                    05  OUT-BROKER-NME       PIC X(25).                                                                     
+  000092                    05                       PIC X(10)  VALUE SPACES.                     IMP                               
+  000093                    05  OUT-DEP-AMT          PIC $$$,$$$,$$9.99.                                                            
+  000094                    05                       PIC X(48)  VALUE SPACES.                     IMP                               
+  000095                                                                                                                            
+  000096                PROCEDURE DIVISION.                                                                                         
+  000097                                                                                                                            
+  000098               ********************************************************                                                     
+  000099               *                                                      *                                                     
+  000100               * 0000-MAIN THIS ROUTINE READS THE INPUT FILE. IT THEN *                                                     
+  000101               * CALLS A ROUTINE TO PROCESS THE RECORD. FINALLY IT    *                                                     
+  000102               * CLOSES THE FILES.                                    *                                                     
+  000103               *                                                      *                                                     
+  000104               ********************************************************                                                     
+  000105                0000-MAIN.                                                                                                  
+  000106                                                                                                                            
+  000107                    OPEN INPUT  SALES-FILE                                                50                                
+  000108                         OUTPUT REPORT-FILE.                                              67                                
+  000109                                                                                                                            
+  000110                    READ SALES-FILE                                                       50                                
+  000111      1               AT END MOVE 'Y' TO EOF-FLAG                                         86                                
+  000112                    END-READ.                                                                                               
+  000113                                                                                                                            
+  000114                    PERFORM 0100-PROCESS-RECORD                                           134                               
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     5                
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference           
+
+  000115                      UNTIL EOF-FLAG = 'Y'.                                               86                                
+  000116                                                                                                                            
+  000117                    CLOSE SALES-FILE                                                      50                                
+  000118                          REPORT-FILE.                                                    67                                
+  000119                                                                                                                            
+  000120                    MOVE 0 TO RETURN-CODE.                                                IMP IMP                           
+  000121                                                                                                                            
+  000122                    STOP RUN.                                                                                               
+  000123                                                                                                                            
+  000124                0000-EXIT. EXIT.                                                                                            
+  000125                                                                                                                            
+  000126               ********************************************************                                                     
+  000127               *                                                      *                                                     
+  000128               * 0100-PROCESS-RECORD THIS ROUTINE IS USED TO PROCESS  *                                                     
+  000129               * THE RECORD FOR EACH BROKER. THEN IT READS THE NEXT   *                                                     
+  000130               * RECORD.                                              *                                                     
+  000131               *                                                      *                                                     
+  000132               ********************************************************                                                     
+  000133                                                                                                                            
+  000134                0100-PROCESS-RECORD.                                                                                        
+  000135                                                                                                                            
+  000136                    MOVE IN-BRANCH-NME TO OUT-BRANCH-NME.                                 54 89                             
+  000137                    MOVE IN-BROKER-NME TO OUT-BROKER-NME.                                 55 91                             
+  000138                    MOVE IN-DEP-AMT TO OUT-DEP-AMT.                                       56 93                             
+  000139                                                                                                                            
+  000140                    WRITE REPORT-RECORD FROM DETAIL-LINE AFTER 2.                         71 88                             
+  000141                                                                                                                            
+  000142                    READ SALES-FILE                                                       50                                
+  000143      1               AT END MOVE 'Y' TO EOF-FLAG                                         86                                
+  000144                    END-READ.                                                                                               
+  000145                                                                                                                            
+  000146                0100-EXIT. EXIT.                                                                                            
+  000147                                                                                                                            
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     6                
+
+An "M" preceding a data-name reference indicates that the data-name is modified by this reference.                                  
+                                                                                                                                    
+ Defined   Cross-reference of data names   References                                                                               
+                                                                                                                                    
+      88   DETAIL-LINE. . . . . . . . . .  140                                                                                      
+      86   EOF-FLAG . . . . . . . . . . .  M111 115 M143                                                                            
+      54   IN-BRANCH-NME. . . . . . . . .  136                                                                                      
+      55   IN-BROKER-NME. . . . . . . . .  137                                                                                      
+      56   IN-DEP-AMT . . . . . . . . . .  138                                                                                      
+      89   OUT-BRANCH-NME . . . . . . . .  M136                                                                                     
+      91   OUT-BROKER-NME . . . . . . . .  M137                                                                                     
+      93   OUT-DEP-AMT. . . . . . . . . .  M138                                                                                     
+      67   REPORT-FILE. . . . . . . . . .  36 108 118                                                                               
+      71   REPORT-RECORD. . . . . . . . .  M140                                                                                     
+       0   RETURN-CODE. . . . . . . . . .  120 M120                                                                                 
+      53   SALE-RECORD                                                                                                              
+      50   SALES-FILE . . . . . . . . . .  35 107 110 117 142                                                                       
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     7                
+
+Context usage is indicated by the letter preceding a procedure-name reference.                                                      
+These letters and their meanings are:                                                                                               
+    A = ALTER (procedure-name)                                                                                                      
+    D = GO TO (procedure-name) DEPENDING ON                                                                                         
+    E = End of range of (PERFORM) through (procedure-name)                                                                          
+    G = GO TO (procedure-name)                                                                                                      
+    P = PERFORM (procedure-name)                                                                                                    
+    T = (ALTER) TO PROCEED TO (procedure-name)                                                                                      
+    U = USE FOR DEBUGGING (procedure-name)                                                                                          
+                                                                                                                                    
+ Defined   Cross-reference of procedures   References                                                                               
+                                                                                                                                    
+     124   0000-EXIT                                                                                                                
+     105   0000-MAIN                                                                                                                
+     146   0100-EXIT                                                                                                                
+     134   0100-PROCESS-RECORD. . . . . .  P114                                                                                     
+
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P230302       SALESRPT  Date 10/11/2023  Time 22:25:09   Page     8                
+
+ Defined   Cross-reference of programs     References                                                                               
+                                                                                                                                    
+      24   SALESRPT                                                                                                                 
+
+
+* Statistics for COBOL program SALESRPT:                                                                                            
+*    Source records = 147                                                                                                           
+*    Data Division statements = 10                                                                                                  
+*    Procedure Division statements = 15                                                                                             
+*    Generated COBOL statements = 0                                                                                                 
+*    Program complexity factor = 15                                                                                                 
+
+End of compilation 1,  program SALESRPT,  no statements flagged.                                                                    
+
+Return code 0                                                                                                                       
+
+z/OS V2 R5 BINDER     22:25:12 WEDNESDAY OCTOBER 11, 2023                                                               
+BATCH EMULATOR  JOB(KC03C60A) STEP(JSTEP02 ) PGM= IEWBLINK                                                              
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                *** O P E R A T I O N   S U M M A R Y   R E P O R T ***                                 
+                                                                                                                        
+
+PROCESSING OPTIONS:                                                                                                     
+                                                                                                                        
+   ALIASES             NO                                                                                               
+   ALIGN2              NO                                                                                               
+   AMODE               UNSPECIFIED                                                                                      
+   CALL                YES                                                                                              
+   CASE                UPPER                                                                                            
+   COMPAT              UNSPECIFIED                                                                                      
+   COMPRESS            AUTO                                                                                             
+   DCBS                NO                                                                                               
+   DYNAM               NO                                                                                               
+   EXTATTR             UNSPECIFIED                                                                                      
+   EXITS:              NONE                                                                                             
+   FILL                NONE                                                                                             
+   GID                 UNSPECIFIED                                                                                      
+   HOBSET              NO                                                                                               
+   INFO                NO                                                                                               
+   LET                 04                                                                                               
+   LINECT              060                                                                                              
+   LIST                SUMMARY                                                                                          
+   LISTPRIV            NO                                                                                               
+   LONGPARM            NO                                                                                               
+   MAP                 NO                                                                                               
+   MAXBLK              032760                                                                                           
+   MODMAP              NO                                                                                               
+   MSGLEVEL            00                                                                                               
+   OVLY                NO                                                                                               
+   PRINT               YES                                                                                              
+   RES                 NO                                                                                               
+   REUSABILITY         UNSPECIFIED                                                                                      
+   RMODE               UNSPECIFIED                                                                                      
+   RMODEX              NO                                                                                               
+   SIGN                NO                                                                                               
+   STORENX             NOREPLACE                                                                                        
+   STRIPCL             NO                                                                                               
+   STRIPSEC            NO                                                                                               
+   SYMTRACE                                                                                                             
+   TERM                NO                                                                                               
+   TRAP                ON                                                                                               
+   UID                 UNSPECIFIED                                                                                      
+   UPCASE              NO                                                                                               
+   WKSPACE             000000K,000000K                                                                                  
+   XCAL                NO                                                                                               
+   XREF                NO                                                                                               
+   ***END OF OPTIONS***                                                                                                 
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+
+SAVE OPERATION SUMMARY:                                                                                                 
+                                                                                                                        
+   MEMBER NAME         SALESRPT                                                                                         
+   LOAD LIBRARY        KC03C60.CSCI465.LOADLIB                                                                          
+   PROGRAM TYPE        PROGRAM OBJECT(FORMAT 3)                                                                         
+   VOLUME SERIAL       KCTR03                                                                                           
+   DISPOSITION         REPLACED                                                                                         
+   TIME OF SAVE        22.25.12  OCT 11, 2023                                                                           
+                                                                                                                        
+                                                                                                                        
+
+SAVE MODULE ATTRIBUTES:                                                                                                 
+                                                                                                                        
+   AC                  000                                                                                              
+   AMODE                31                                                                                              
+   COMPRESSION         NONE                                                                                             
+   DC                  NO                                                                                               
+   EDITABLE            YES                                                                                              
+   EXCEEDS 16MB        NO                                                                                               
+   EXECUTABLE          YES                                                                                              
+   LONGPARM            NO                                                                                               
+   MIGRATABLE          NO                                                                                               
+   OL                  NO                                                                                               
+   OVLY                NO                                                                                               
+   PACK,PRIME          NO,NO                                                                                            
+   PAGE ALIGN          NO                                                                                               
+   REFR                NO                                                                                               
+   RENT                NO                                                                                               
+   REUS                NO                                                                                               
+   RMODE               ANY                                                                                              
+   SCTR                NO                                                                                               
+   SIGN                NO                                                                                               
+   SSI                                                                                                                  
+   SYM GENERATED       NO                                                                                               
+   TEST                NO                                                                                               
+   XPLINK              NO                                                                                               
+   MODULE SIZE (HEX)   000020FC                                                                                         
+   DASD SIZE (HEX)     0000A000                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+ ENTRY POINT AND ALIAS SUMMARY:                                                                                         
+                                                                                                                        
+ NAME:            ENTRY TYPE AMODE C_OFFSET CLASS NAME        STATUS                                                    
+                                                                                                                        
+ SALESRPT          MAIN_EP      31 00000000 C_CODE                                                                      
+                                                                                                                        
+                         *** E N D   O F   O P E R A T I O N   S U M M A R Y   R E P O R T ***                          
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+
+z/OS V2 R5 BINDER     22:25:12 WEDNESDAY OCTOBER 11, 2023                                                               
+BATCH EMULATOR  JOB(KC03C60A) STEP(JSTEP02 ) PGM= IEWBLINK                                                              
+IEW2008I 0F03 PROCESSING COMPLETED.  RETURN CODE =  0.                                                                  
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+
+----------------------                                                                                                  
+MESSAGE SUMMARY REPORT                                                                                                  
+----------------------                                                                                                  
+ TERMINAL MESSAGES      (SEVERITY = 16)                                                                                 
+ NONE                                                                                                                   
+                                                                                                                        
+ SEVERE MESSAGES        (SEVERITY = 12)                                                                                 
+ NONE                                                                                                                   
+                                                                                                                        
+ ERROR MESSAGES         (SEVERITY = 08)                                                                                 
+ NONE                                                                                                                   
+                                                                                                                        
+ WARNING MESSAGES       (SEVERITY = 04)                                                                                 
+ NONE                                                                                                                   
+                                                                                                                        
+ INFORMATIONAL MESSAGES (SEVERITY = 00)                                                                                 
+ 2008                                                                                                                   
+                                                                                                                        
+                                                                                                                        
+ **** END OF MESSAGE SUMMARY REPORT ****                                                                                
+                                                                                                                        
+
+Athens, Greece                     George Schipodokas                      $1,124.71                                                
+
+Athens, Greece                     Boodra Makedonas                        $3,704.71                                                
+
+Athens, Greece                     Aristotle Onassis                      $14,173.13                                                
+
+Athens, Greece                     Maria Callas                           $15,401.52                                                
+
+Athens, Greece                     Kostas Dalaras                          $7,740.68                                                
+
+Athens, Greece                     Peter Bogdonas                          $2,334.72                                                
+
+Berlin, Germany                    Erich Kleiber                          $93,618.48                                                
+
+Berlin, Germany                    Wilhelm Furtwaengler                  $716,614.94                                                
+
+Berlin, Germany                    Adolph Dege                            $80,821.35                                                
+
+Berlin, Germany                    Johannes Klopp                        $400,870.20                                                
+
+Berlin, Germany                    Eugen Jochum                        $9,999,999.99                                                
+
+Bonn, Germany                      Ludwig van Beethoven                    $4,061.21                                                
+
+Bonn, Germany                      Uwe Schmidt                           $207,430.39                                                
+
+Bonn, Germany                      Helga Dernesch                            $841.52                                                
+
+Bonn, Germany                      Richard Strauss                       $310,814.02                                                
+
+Chicago, U.S.                      Maurizio Damilano                   $4,000,081.02                                                
+
+Chicago, U.S.                      Chi Yen Weh                           $431,081.00                                                
+
+Chicago, U.S.                      Steve Peplowski                       $241,001.21                                                
+
+Chicago, U.S.                      Michael Smith                         $314,081.22                                                
+
+Chicago, U.S.                      Charles Medley                        $310,481.23                                                
+
+Chicago, U.S.                      Risa Rogan                            $310,841.24                                                
+
+Chicago, U.S.                      Theodore Thomas                       $310,814.25                                                
+
+Chicago, U.S.                      Frederick Stock                       $310,812.46                                                
+
+Dublin, Ireland                    Billy O'Leary                         $310,821.42                                                
+
+Dublin, Ireland                    Anna Owen                             $331,083.14                                                
+
+Belfast, N. Ireland                Chet Manassas                          $51,223.41                                                
+
+Belfast, N. Ireland                Shelley Mann                          $330,000.52                                                
+
+Belfast, N. Ireland                Philip Battenberg                       $3,111.60                                                
+
+Edinburgh, U.K.                    Billy Connolly                        $310,381.72                                                
+
+Edinburgh, U.K.                    Omar Sharif                           $310,831.12                                                
+
+Edinburgh, U.K.                    Julie Christie                        $310,813.12                                                
+
+Edinburgh, U.K.                    James Oxfordshire                     $310,811.32                                                
+
+Frankfurt, Germany                 Johannes Dundor                       $460,641.05                                                
+
+Frankfurt, Germany                 Gretel Decker                         $180,764.08                                                
+
+Frankfurt, Germany                 Adam Dieffenbach                      $606,825.41                                                
+
+Hong Kong, China                   Mao Zedong                            $608,627.12                                                
+
+Hong Kong, China                   Zhou Enlai                            $608,266.12                                                
+
+Hong Kong, China                   Zhau Ziyang                           $698,276.12                                                
+
+Hong Kong, China                   Chiang Kai-shek                     $2,618,281.62                                                
+
+Hong Kong, China                   Gau-Yin Lau                            $60,829.12                                                
+
+Hong Kong, China                   Stephanie Buckingham                  $460,821.23                                                
+
+Hong Kong, China                   Simon Draper                          $640,821.23                                                
+
+London, U.K.                       Elizabeth Windsor                     $714,492.35                                                
+
+London, U.K.                       Charles Windsor                       $217,916.20                                                
+
+London, U.K.                       Andrew Windsor                        $661,102.24                                                
+
+London, U.K.                       Michael Windsor                     $1,066,362.25                                                
+
+London, U.K.                       Phillip Windsor                       $116,641.61                                                
+
+London, U.K.                       William Windsor                       $221,661.72                                                
+
+Los Angeles, U.S.                  William Mills                         $111,966.78                                                
+
+Los Angeles, U.S.                  Catherine Monteiro                  $9,999,999.99                                                
+
+Los Angeles, U.S.                  Jason Landau                          $500,000.78                                                
+
+Los Angeles, U.S.                  Trevor Pinnicle                       $150,000.00                                                
+
+Kyiv, Ukraine                      Yvgeny Yevtushenko                    $135,191.78                                                
+
+Kyiv, Ukraine                      Vladimir Ashkenazy                    $111,591.78                                                
+
+Kyiv, Ukraine                      Serge Rachmaninov                      $11,951.78                                                
+
+Kyiv, Ukraine                      Leo Tolstoy                           $101,915.77                                                
+
+Kyiv, Ukraine                      Fyodor Dostoevsky                      $11,333.63                                                
+
+Kyiv, Ukraine                      Dmitri Shostakovich                   $181,194.74                                                
+
+New York, U.S.                     Gary Graffman                         $118,191.78                                                
+
+New York, U.S.                     Andre Previn                          $232,821.78                                                
+
+New York, U.S.                     Samuel Jefferson                       $99,989.99                                                
+
+New York, U.S.                     John Adams                            $111,978.78                                                
+
+New York, U.S.                     Cheryl Studer                         $301,491.78                                                
+
+New York, U.S.                     Renee Fleming                         $331,121.78                                                
+
+New York, U.S.                     Birgit Nilsson                         $33,194.48                                                
+
+New York, U.S.                     Christa Ludwig                        $113,391.74                                                
+
+New York, U.S.                     James Conlon                           $99,939.99                                                
+
+New York, U.S.                     Leonard Bernstein                     $111,913.78                                                
+
+Paris, France                      Napoleon Bonaparte                  $1,007,309.30                                                
+
+Paris, France                      Claude Monet                        $3,001,251.86                                                
+
+Paris, France                      Olivier Messiaen                      $300,141.60                                                
+
+Paris, France                      Claude Debussy                        $930,781.55                                                
+
+Paris, France                      Maurice Ravel                       $1,003,012.22                                                
+
+Paris, France                      Edith Piaf                            $263,340.33                                                
+
+Paris, France                      Coco Chanel                           $226,130.54                                                
+
+Sao Paulo, Brazil                  Joao Castagneto                         $3,103.55                                                
+
+Sao Paulo, Brazil                  Lasar Segall                            $6,105.37                                                
+
+Sao Paulo, Brazil                  Tarsila do Amaral                     $300,010.58                                                
+
+Sao Paulo, Brazil                  Eliseu Visconti                        $32,230.54                                                
+
+Rome, Italy                        Julius Caesar                         $203,410.65                                                
+
+Rome, Italy                        Franco Sinatra                          $4,310.55                                                
+
+Rome, Italy                        Giacomo Puccini                        $30,460.45                                                
+
+Rome, Italy                        Enrico Caruso                          $88,413.35                                                
+
+Rome, Italy                        Sofia Loren                           $900,415.25                                                
+
+Sydney, Australia                  Milton Sheppard                        $90,460.65                                                
+
+Sydney, Australia                  Shelley Boughton                        $9,810.58                                                
+
+Sydney, Australia                  Joan Sutherland                         $2,910.55                                                
+
+Sydney, Australia                  Barry Tuckwell                          $9,190.54                                                
+
+Sydney, Australia                  Cayla Smithe                            $2,109.59                                                
+
+Sydney, Australia                  Benjamin Britten                        $4,105.94                                                
+
+Sydney, Australia                  Peter Pears                             $4,930.56                                                
+
+Sydney, Australia                  Paul Gray                              $90,310.45                                                
+
+Vienna, Austria                    Herbert von Karajan                     $9,580.28                                                
+
+Vienna, Austria                    Franz Joseph Haydn                      $5,890.30                                                
+
+Vienna, Austria                    Josef Strauss                          $15,809.48                                                
+
+Vienna, Austria                    Karl Boehm                            $505,808.96                                                
+
+Vienna, Austria                    Elisabeth Schwarzkopf                  $12,480.29                                                
+
+Vienna, Austria                    Franz Peter Schubert                    $9,831.05                                                
+
+Zurich, Switzerland                Earl Grey                             $400,058.01                                                
+
+Zurich, Switzerland                Diana Kensington                       $87,057.55                                                
+
+Zurich, Switzerland                Axel Vondenberg                        $30,759.01                                                
+
+Zurich, Switzerland                Ute Schweitzer                        $147,058.00                                                
+
+Zurich, Switzerland                Rene Jacobs                            $72,558.00                                                
+
+Zurich, Switzerland                Anton Bruckner                         $99,999.99                                                
+
