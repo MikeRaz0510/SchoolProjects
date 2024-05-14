@@ -1,0 +1,41 @@
+Assignment 5
+Due 10/30/2023 by 11:59 pm
+100 Points
+
+
+Your name: Mike Rasmussen
+Answer all questions properly. All the answers can be found in the textbook.  The answer should at least be what you find in the text.  Please do not write a single sentence or two.  These are 10 point questions.  So please elaborate.  Your understanding is required for the successful completion of the project in the later weeks.
+
+1.	What perspectives should be used for developing models of a software system?
+	An external perspective, where you model the context or environment of the system. An interaction perspective, where you model the interactions between a system and its environment or between the components of a system. A structural perspective where you model the organization of a system or the structure of the data that is processed by the system. And finally, a behavioural perspective, where you model the dynamic behaviour of the system and how it responds to events.
+
+2.	What UML diagram types do you need to represent the essential features of a system?
+	Activity diagrams, which show the activities involved in a process or in data processing. Use case diagrams, which show the interactions between a system and its environment. Sequence diagrams, which show interactions between actors and the system and between system components. Class diagrams, which show the object classes in the system and the associations between these classes. State diagrams, which show how the system reacts to internal and external events.
+
+3.	What is described in a context model?
+	Context models are used to illustrate the operational context of a system.  		They show what lies outside the system boundaries.
+
+4.	How are activity diagrams used in describing the context of use of a system?
+	Activity diagrams can be useful as a means of facilitating discussion about an existing or proposed system. Incomplete or incorrect models are ok as their role is to support discussion. They can also be used as a way of documenting an existing system. Models should be an accurate representation of the system but need not be complete. Finally they can be used as a detailed system description that can be used to generate a system implementation. Models have to be correct and complete to be used to generate a system implementation.
+
+5.	What are the principal components of a textual use-case description?
+	The principal components of a textual use case description are Actors, Description, data, stimulus, response, and comments. Actors describe who or what is using the system. Then it is important to leave a description of the actors to know how they interact with the system. Data is the data stored in the system. Stimulus is how an actor may retrieve data from the system. Response is how the system responds to the actor's request to access the data. And finally it is important to leave comments of any additional information about the system.
+
+6.	What is illustrated in a UML sequence diagram?
+	A sequence diagram is used to model the interaction between the actors and the objects within a system. It shows the sequence of interaction that takes place during a particular use case or use case instance.
+
+7.	How is generalization used to simplify the models of a system with many similar objects?
+	Generalization allows us to place entities in more general classes and learn the characteristics of those classes, instead of learning the detailed characteristics of every entity that we experience. This allows us to infer that different members of these classes have some common characteristics.
+
+
+
+
+8.	What is the basic assumption that underlies event-driven modelling?
+	Event driven modelling is based on the assumption that a system has a finite number of states and that events may cause a transition from one state to another.
+
+9. 	What are the claimed benefits of model-driven engineering?
+	Model driven engineering allows systems to be considered at higher levels of abstraction. Another benefit is that generating code automatically means that it is cheaper to adapt systems to new platforms.
+
+10.	What are the three types of abstract system model that are recommended by the MDA method?
+	Computation independent model (CIM). These model the important domain abstraction used in a system. Platform independent model (PIM). These model the operation of the system without reference to its implementation. And Platform specific models (PSM). THese are transformations of the platform independent model with a separate PSM for each application platform. There may be layers of PSM with each layer adding some platform specific detail.
+
