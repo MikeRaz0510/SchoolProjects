@@ -8,6 +8,15 @@
 //
 //FT06F001 DD SYSOUT=*
 //
+*****************************************************************                           
+*                                                               *                           
+* CSCI 360-PE1           ASSIGNMENT 9               Spring 2023 *                           
+* Packed Decimal                                                *                           
+*                                                               *                           
+* DEVELOPER NAME: Mike Rasmussen                                *                           
+* DUE DATE: 4/21/23                                             *                           
+*                                                               *                           
+*****************************************************************    
 PAYROLL2 CSECT
 STM   14,12,12(13)  SAVE REGS IN CALLER'S SAVE AREA
 LR    12,15         COPY CSECT ADDR INTO R12
