@@ -1,0 +1,52 @@
+Assignment 4
+Due 10/23/2023 by 11:59 pm
+100 Points
+
+
+Your name: Mike Rasmussen
+Answer all questions properly. All the answers can be found in the textbook.  The answer should at least be what you find in the text.  Please do not write a single sentence or two.  These are 10 point questions.  So please elaborate.  Your understanding is required for the successful completion of the project in the later weeks.
+
+    1. What are user requirements and system requirements?
+User requirements are statements in natural language and diagrams of the services the system provides and its operational constraints, written for customers. System requirements is a structured document that contains detailed descriptions of the systems function services and operational constraints. it defines what should be implemented so it may be a part of a contract between a client and a contractor. 
+    2. What is the distinction between functional and non-functional requirements?
+functional requirements are statements of services the system should provide, how the system should react to particular input and how the system should behave in particular situations. non-functional requirements are constraints on the services or sanctions offered by the system. These can include timing constraints, constraints on the development process and standards. non functional requirements often apply to the system as a whole rather than an individual feature. 
+    3. List 3 types of non-functional requirement?
+1. product requirements
+2. organisational requirements
+3. external requirements
+
+
+    4. What are the principal stages of the requirements engineering process?
+The principal stages of the requirements engineering process are requirements elicitation, requirements analysis, requirements validation, requirements management. These stages are interleaved.
+
+    5. Give 5 reasons why eliciting requirements is difficult?
+Stakeholders don't know what they want and they express requirements in their own terms. Different stakeholders may have conflicting requirements. organisational and political factors may influence the system requirements. the requirements change during the analysis process, a new stakeholder may emerge and the business environment may change.
+    6. What is ethnography and how is it used in requirements elicitation?
+Ethnography is the systematic study of individual cultures. It can be used in requirements elicitation to derive requirements from the way people actually work as opposed to process definitions.
+    7. What information should be included in a scenario?
+Scenarios should include a description of the starting situation, a description of the normal flow of events, a description of what can go wrong, information about other concurrent activities, and a description of the state when the scenario finishes. 
+    8. What is the distinction between the terms’ shall’ and ‘should’ in a user requirements document, which is written in natural language?
+Shall is used for mandatory requirements, where should is used for desirable requirements.
+    9. What are the main advantages of using a standard format to specify requirements?
+Using a standard format to specify requirements will make all of your requirements consistent. If a standard format is used, it will be expressive, intuitive and universal, meaning that it can be understood by users and customers.
+
+
+
+
+    10. What is a use-case?
+A use case is a kind of scenario that is included in the UML that will identify the actors in an interaction and which describe the interaction itself. A set of use cases should describe all possible interaction with the system. UML sequence diagrams may be used to add detail to use cases by showing the sequence of events processing in the system.
+    11. How do managers and test engineers use a system requirements document?
+Managers use the system requirements document to plan a bid for the system and to plan the system development process. System test engineers use the system requirements document to develop validation tests for the system.
+    12. What checks should be applied during requirements validation?
+The checks that need to be applied during validation are validity consistency, completeness, realism, and verifiability. Vidity checks if the system provides the functions which best support the customers needs. Consistency checks if there are any requirements that conflict. completeness checks if all functions required by the customer are included. realism checks if the requirements can be implemented with the given budget and technology. Verifiability checks if the requirements can be checked.
+    13. List three requirements validation techniques?
+1. requirements reviews - systematic manual analysis of the requirements.
+2. prototyping - using an executable model of the system to check requirements.
+3. test-case generation - developing tests for requirements to check testability.
+    14. What is requirements management?
+Requirements management is the process of managing changing requirements during the requirements engineering process and system development.
+
+
+
+    15. What are the stages in the requirements change management process?
+The first stage is problem analysis and change specification. During this stage the problem is analysed to check that it is valid. The second stage is change analysis and costing. The effect of the proposed change is assessed using traceability information and general knowledge of the system requirements. After the analysis is completed, a decision is made whether to change the requirements or not. The third stage is change implementation. the requirements document and the system design and implementation are modified. The document should be organised to easily implement changes.
